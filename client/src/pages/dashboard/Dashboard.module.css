@@ -1,5 +1,14 @@
 .container {
   width: 95%;
   margin: auto;
-  margin-top: 0px;
+  padding-top: 30px; /*Issue when doing margin; */
+}
+
+.statsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main {
+  height: 85vh;
 }

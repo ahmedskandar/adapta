@@ -3,19 +3,22 @@
   justify-content: space-between;
   width: 95%;
   margin: auto;
+  height: 100%;
+  align-items: center;
 }
 
 .header {
   background-color: #f3f3f3;
+  height: 15vh;
 }
 
 nav ul {
   display: flex;
+  gap: 40px;
 }
 
 nav ul li {
   list-style-type: none;
-  margin: 46px 36px;
 }
 
 .link {

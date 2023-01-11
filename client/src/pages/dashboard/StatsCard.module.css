@@ -1,0 +1,61 @@
+.container {
+  width: 30%;
+  border: 2px solid #f3f3f3;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 20px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chartCont {
+  width: 35%;
+}
+
+.cont2 {
+  width: 55%;
+}
+
+.chart {
+  width: 100%;
+}
+
+.sec1 {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.risk {
+  margin: 15px 0;
+}
+
+.redCircle {
+  color: red;
+}
+
+.yellowCircle {
+  color: yellow;
+}
+
+.greenCircle {
+  color: green;
+}
+
+.smallSec {
+  display: flex;
+  gap: 5px;
+}
+
+.sec2 {
+  justify-content: space-between;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.climateScore {
+  border: 1.5px solid #f3e39f;
+  border-radius: 20px;
+  padding: 10px;
+}
