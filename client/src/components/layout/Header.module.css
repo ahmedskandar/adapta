@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: auto;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav ul li {
+  color: #2f4a59;
+  font-weight: 700;
+  list-style-type: none;
+  margin: 46px 36px;
+  font-size: 23px;
+}
+
+.logo {
+  width: 187px;
+}
