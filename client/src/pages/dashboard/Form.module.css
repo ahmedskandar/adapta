@@ -18,7 +18,9 @@ form div > label {
   color: #2f4a59;
 }
 
-form input[type="text"] {
+form input[type="text"],
+form input[type="month"],
+.select {
   width: 227px;
   height: 29px;
   border: 2px solid #f3f3f3;
@@ -96,4 +98,12 @@ form input[type="text"]::placeholder {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+.info {
+  height: 12px;
+}
+
+.span {
+  color: #f3f3f3;
 }

@@ -2,6 +2,8 @@ import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/svg/logo.svg";
 import classes from "./Header.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignIn } from "@fortawesome/free-solid-svg-icons";
 
 const Header: FC = () => {
   return (
@@ -53,11 +55,15 @@ const Header: FC = () => {
             <li>
               <NavLink
                 className={({ isActive }) => {
-                  return isActive ? classes.active : classes.link;
+                  return isActive ? classes.activeSignUp : classes.linkSignUp;
                 }}
                 to={"/signin"}
               >
                 Sign in
+                <FontAwesomeIcon
+                  className={classes.signInIcon}
+                  icon={faSignIn}
+                />
               </NavLink>
             </li>
           </ul>

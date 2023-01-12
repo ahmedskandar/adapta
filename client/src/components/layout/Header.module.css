@@ -24,7 +24,7 @@ nav ul li {
 .link {
   color: #2f4a59;
   font-weight: 700;
-  font-size: 23px;
+  font-size: 1.3vw;
   text-decoration: none;
 }
 
@@ -32,10 +32,26 @@ nav ul li {
   border-bottom: 2px solid #2f4a59;
   color: #2f4a59;
   font-weight: 700;
-  font-size: 23px;
+  font-size: 1.3vw; /*23px*/
+  text-decoration: none;
+}
+
+.linkSignUp {
+  border-bottom: 2px solid #d9d9d9;
+  background-color: #ecf1fa;
+  border-radius: 20px;
+  padding: 7px;
+  color: #2f4a59;
+  font-weight: 700;
+  font-size: 1.3vw; /*23px*/
   text-decoration: none;
 }
 
 .logo {
   width: 187px;
+}
+
+.signInIcon {
+  width: 15px;
+  margin-left: 5px;
 }
