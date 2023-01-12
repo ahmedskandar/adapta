@@ -3,8 +3,9 @@ import classes from "./StatsCard.module.css";
 import chart from "../../assets/svg/PieChart.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
+import { StatsCardI } from "../../data/interfaces";
 
-const StatsCard: React.FC = () => {
+const StatsCard: React.FC<StatsCardI> = ({ scoreText, riskText }) => {
   return (
     <div className={classes.container}>
       <div className={classes.chartCont}>
@@ -12,10 +13,10 @@ const StatsCard: React.FC = () => {
       </div>
       <div className={classes.cont2}>
         <div className={classes.sec1}>
-          <div>Impact</div>
-          <div className={classes.climateScore}>Climate Score</div>
+          <div className={classes.impact}>Impact</div>
+          <div className={classes.score}>{scoreText}</div>
         </div>
-        <h2 className={classes.risk}>High risk</h2>
+        <h2 className={classes.risk}>{riskText}</h2>
         <div className={classes.sec2}>
           <div className={classes.smallSec}>
             <FontAwesomeIcon className={classes.redCircle} icon={faCircle} />

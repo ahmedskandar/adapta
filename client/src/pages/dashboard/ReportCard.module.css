@@ -1,0 +1,24 @@
+.container {
+  border: 2px solid #f3f3f3;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  height: 100%;
+  color: #536a74;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.smallHeading {
+  margin-top: 25px;
+}
+
+.paragraph {
+  margin-top: 20px;
+}
+
+.reportBtn {
+  text-align: right;
+}

@@ -4,11 +4,15 @@
   padding-top: 30px; /*Issue when doing margin; */
 }
 
-.statsContainer {
+.statsSection {
   display: flex;
   justify-content: space-between;
 }
 
 .main {
-  height: 85vh;
+  height: 78vh;
+}
+
+.topSection {
+  display: flex;
 }

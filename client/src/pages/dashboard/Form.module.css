@@ -3,13 +3,13 @@
 }
 
 .container {
-  width: 20%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   border: 2px solid #f3f3f3;
   border-radius: 10px;
-  box-sizing: border-box;
   padding: 20px;
+  background-color: #fff;
 }
 
 form div > label {
@@ -47,4 +47,53 @@ form input[type="text"]::placeholder {
   border-radius: 8px;
   border: none;
   cursor: pointer;
+}
+/*biodiversity*/
+
+.container2 {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.biodiversityContainer {
+  font-weight: bold;
+  display: flex;
+  color: #2f4a59;
+}
+
+.icon {
+  margin-left: 5px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  opacity: 0;
+  width: 120px;
+  background-color: gray;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+  transition: 1s;
+
+  opacity: 0;
+  transition: opacity 0.5s;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }

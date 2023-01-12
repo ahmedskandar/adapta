@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 body {
+  background-color: #fbfcfc;
+
   font-size: 11px;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
