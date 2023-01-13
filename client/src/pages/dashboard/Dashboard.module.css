@@ -1,18 +1,57 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  /* gap: 3vw; */
   width: 95%;
   margin: auto;
-  padding-top: 30px; /*Issue when doing margin; */
+  /* padding-top: 30px;Issue when doing margin; */
+}
+
+.topSection {
+  height: 48vh;
+  display: flex;
+  align-items: center;
+
+}
+
+.topSection > div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 80%;
 }
 
 .statsSection {
   display: flex;
+  align-items: center;
+  height: 30vh;
+}
+
+.statsSection > div {
+  width: 100%;
+  display: flex;
   justify-content: space-between;
+  /* margin-top: 20px; */
 }
 
 .main {
   height: 78vh;
 }
 
-.topSection {
-  display: flex;
+.formContainer {
+  width: 18%;
 }
+
+.reportContainer {
+  width: 18%;
+}
+
+.compositeContainer {
+  width: 18%;
+}
+
+.mapContainer {
+  width: 42%;
+}
+
+

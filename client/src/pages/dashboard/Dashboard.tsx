@@ -13,22 +13,29 @@ const Home: React.FC = () => {
         <div className={classes.container}>
           <section className={classes.topSection}>
             <div>
-              <Form />
-            </div>
-            <div>
-              <Map />
-            </div>
-            <div>
-              <CompositeCard />
-            </div>
-            <div>
-              <ReportCard />
+              <div className={classes.formContainer}>
+                <Form />
+              </div>
+              <div className={classes.mapContainer}>
+                <Map />
+              </div>
+              <div className={classes.compositeContainer}>
+                <CompositeCard />
+              </div>
+              <div className={classes.reportContainer}>
+                <ReportCard />
+              </div>
             </div>
           </section>
           <section className={classes.statsSection}>
-            <StatsCard riskText="High Risk" scoreText="Climate Score" />
-            <StatsCard riskText="Medium Risk" scoreText="Water Score" />
-            <StatsCard riskText="Low Risk" scoreText="Soil Suitability Score" />
+            <div>
+              <StatsCard riskText="High Risk" scoreText="Climate Score" />
+              <StatsCard riskText="Medium Risk" scoreText="Water Score" />
+              <StatsCard
+                riskText="Low Risk"
+                scoreText="Soil Suitability Score"
+              />
+            </div>
           </section>
         </div>
       </main>
