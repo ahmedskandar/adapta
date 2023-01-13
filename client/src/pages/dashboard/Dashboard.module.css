@@ -35,7 +35,7 @@
 }
 
 .main {
-  height: 78vh;
+  min-height: 78vh;
 }
 
 .formContainer {
@@ -54,4 +54,56 @@
   width: 42%;
 }
 
+.statsContainer {
+  width: 32%;
+ }
 
+
+@media only screen and (max-width: 992px) {
+
+  
+  .topSection, .statsSection {
+    height: auto;
+    margin-top: 30px;
+  }
+
+  .statsSection {
+    margin-bottom: 30px;
+  }
+
+  .topSection > div{
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+ .statsSection > div {
+  flex-wrap: wrap;
+      gap: 30px;
+ }
+
+  .formContainer {
+    width: 48%;
+  }
+
+  .mapContainer {
+    width: 48%;
+  }
+
+  .compositeContainer {
+    width: 48%;
+  }
+
+  
+.reportContainer {
+  width: 48%;
+}
+
+
+  
+ .statsContainer {
+  width: 48%;
+ }
+
+
+  
+}
