@@ -75,23 +75,36 @@
     justify-content: space-around;
   }
 
-  .formContainer {
+  .formContainer, .mapContainer, .compositeContainer, .reportContainer, .statsContainer{
     width: 45%;
   }
 
-  .mapContainer {
-    width: 45%;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .topSection > div {
+    gap: 0;
   }
 
   .compositeContainer {
-    width: 45%;
+    margin-top: 30px;
   }
 
   .reportContainer {
-    width: 45%;
+    margin-top: 30px;
   }
 
-  .statsContainer {
-    width: 45%;
+  .formContainer, .mapContainer, .compositeContainer, .reportContainer, .statsContainer{
+    width: 100%;
   }
+
+  .formContainer {
+    height: 45vh;
+  }
+
+  .mapContainer {
+    height: 45vh;
+  }
+
 }
