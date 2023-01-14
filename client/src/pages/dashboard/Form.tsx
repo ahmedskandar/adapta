@@ -101,9 +101,7 @@ const Form: React.FC = () => {
             </span>
           </div>
         </div>
-        <div>
-          <img className={classes.info} src={tick} alt="" />
-        </div>
+          <img className={classes.info} src={tick} title="Non protected area" alt="" />
       </div>
     </aside>
   );

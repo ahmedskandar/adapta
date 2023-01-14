@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Dashboard.module.css";
 import Form from "./Form";
 import StatsCard from "./StatsCard";
 import Map from "./Map";
 import CompositeCard from "./CompositeCard";
 import ReportCard from "./ReportCard";
+import ReportModal from "./ReportModal";
 
 const Home: React.FC = () => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModalHandler = () => {
+    setIsModalOpen(true);
+  }
+
+  const closeModalHandler = () => {
+    setIsModalOpen(false);
+  } 
+
   return (
     <>
+    {isModalOpen && <ReportModal onClose={closeModalHandler} />}
       <main className={classes.main}>
         <div className={classes.container}>
           <section className={classes.topSection}>
@@ -23,7 +36,7 @@ const Home: React.FC = () => {
                 <CompositeCard />
               </div>
               <div className={classes.reportContainer}>
-                <ReportCard />
+                <ReportCard onOpen={openModalHandler}/>
               </div>
             </div>
           </section>

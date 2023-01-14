@@ -1,7 +1,8 @@
 import React from "react";
+import { ReportCardI } from "../../data/interfaces";
 import classes from "./ReportCard.module.css";
 
-const ReportCard: React.FC = () => {
+const ReportCard: React.FC <ReportCardI> = (props) => {
   return (
     <div className={classes.container}>
       <div>
@@ -18,7 +19,7 @@ const ReportCard: React.FC = () => {
           they represent areas which affected your score.
         </p>
       </div>
-      <div className={classes.reportBtn}>View full Report</div>
+      <div className={classes.reportBtn}><button onClick={props.onOpen}>View full Report</button></div>
     </div>
   );
 };
