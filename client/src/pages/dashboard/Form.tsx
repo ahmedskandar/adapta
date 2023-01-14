@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import classes from "./Form.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import tick from "../../assets/svg/tick.svg";
 import danger from "../../assets/svg/danger.svg";
+import { useDispatch } from 'react-redux'
+import { FormSliceActions } from "../../store/FormSlice";
 
 const Form: React.FC = () => {
+
+  const dispatch = useDispatch();
+
   const [monthInputType, setMonthInputType] = useState("text");
 
   const [cropInputType, setCropInputType] = useState(false);
@@ -18,12 +23,36 @@ const Form: React.FC = () => {
     setCropInputType(true);
   };
 
+  const locationInputRef = useRef<HTMLInputElement>(null);
+  const periodInputRef = useRef<HTMLInputElement>(null);
+  const cropInputRef = useRef<HTMLSelectElement>(null);
+
+  const onSubmitHandler = (e: React.FormEvent) => {
+
+    e.preventDefault();
+
+    const location = locationInputRef.current!.value;
+    const period = periodInputRef.current!.value;
+    const crop = cropInputRef.current!.value;
+
+    console.log(location, period, crop);
+
+    dispatch(FormSliceActions.hasComputed())
+
+    locationInputRef.current!.value = ''
+    periodInputRef.current!.value = ''
+    cropInputRef.current!.value = ''
+
+  };
+
   return (
     <aside className={classes.container}>
-      <form>
+      <form onSubmit={onSubmitHandler}>
         <div className={classes.left}>
           <label htmlFor="location">Search Location</label> <br />
           <input
+          required
+            ref={locationInputRef}
             type="text"
             placeholder="Enter Location Coordinates"
             id="location"
@@ -32,6 +61,8 @@ const Form: React.FC = () => {
         <div className={`${classes.left} ${classes.margin}`}>
           <label htmlFor="time">Select Period To Plant</label> <br />
           <input
+          required
+            ref={periodInputRef}
             onMouseOver={date}
             type={monthInputType}
             placeholder="Select month"
@@ -42,7 +73,7 @@ const Form: React.FC = () => {
           {cropInputType === false ? (
             <input type="text" onMouseOver={crop} placeholder="Select crop" />
           ) : (
-            <select className={classes.select}>
+            <select required ref={cropInputRef} className={classes.select}>
               <option value="" selected disabled hidden>
                 Select a crop
               </option>
