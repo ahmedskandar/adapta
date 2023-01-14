@@ -19,6 +19,24 @@ nav ul {
 
 nav ul li {
   list-style-type: none;
+  position: relative;
+}
+
+
+
+.li::after {
+  content: '';
+  height: 3px;
+  width: 0;
+  background-color: #2f4a59;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  transition: .5s;
+}
+
+.li:hover::after {
+  width: 100%;
 }
 
 .link {
@@ -28,12 +46,23 @@ nav ul li {
   text-decoration: none;
 }
 
+
 .active {
-  border-bottom: 2px solid #2f4a59;
   color: #2f4a59;
   font-weight: 700;
   font-size: 1.3vw; /*23px*/
   text-decoration: none;
+  cursor: not-allowed;
+}
+
+.active::after {
+  content: '';
+  height: 3px;
+  width: 100%;
+  background-color: #2f4a59;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
 }
 
 .linkSignUp {

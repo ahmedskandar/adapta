@@ -12,7 +12,7 @@ const Header: FC = () => {
         <img src={logo} className={classes.logo} alt="logo" />
         <nav>
           <ul>
-            <li>
+            <li className={classes.li}>
               <NavLink
                 className={({ isActive }) => {
                   return isActive ? classes.active : classes.link;
@@ -22,7 +22,7 @@ const Header: FC = () => {
                 Home
               </NavLink>
             </li>
-            <li>
+            <li className={classes.li}>
               <NavLink
                 className={({ isActive }) => {
                   return isActive ? classes.active : classes.link;
@@ -32,7 +32,7 @@ const Header: FC = () => {
                 Dashboard
               </NavLink>
             </li>
-            <li>
+            <li className={classes.li}>
               <NavLink
                 className={({ isActive }) => {
                   return isActive ? classes.active : classes.link;
@@ -42,7 +42,7 @@ const Header: FC = () => {
                 Subscription
               </NavLink>
             </li>
-            <li>
+            <li className={classes.li}>
               <NavLink
                 className={({ isActive }) => {
                   return isActive ? classes.active : classes.link;

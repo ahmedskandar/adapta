@@ -1,0 +1,29 @@
+.container {
+    border-radius: 5px;
+    height: 17%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    color: white;
+    margin-top: 20px;
+}
+
+.innerContainer {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.green {
+    background-color: green;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.red{
+    background-color: red;
+}
