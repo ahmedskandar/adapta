@@ -22,7 +22,10 @@ const ReportCard: React.FC <ReportCardI> = (props) => {
         { hasComputed ?
           <p className={classes.paragraph}>
           You have a fair credit score. The below factors are informative and
-          they represent areas which affected your score.
+          they represent areas which affected your score. <br /> <br />
+
+          <b>Note:</b> <br /> 
+          By acting on the following recommendations your composite credit score will improve.
         </p> : <p className={classes.paragraph}>The climate adaptation plan helps you to determine measures to take so as to improve your credit score. Please compute a score to view the report.</p>
         
       }

@@ -1,0 +1,51 @@
+.sec1 {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  
+.score {
+    border: 2px solid #e4a11b;
+    border-radius: 20px;
+    padding: 5px 10px;
+    color: #e4a11b;
+  }
+  
+  .impact {
+    color: #757575;
+    font-weight: bold;
+    font-size: medium;
+  }
+  
+  
+.smallSec {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .sec2 {
+    margin-top: 30px;
+    justify-content: space-between;
+    display: flex;
+  }
+
+  
+.redCircle {
+    color: red;
+  }
+  
+  .yellowCircle {
+    color: yellow;
+  }
+  
+  .greenCircle {
+    color: green;
+  }
+  
+  .risk {
+    margin: 15px 0;
+    color: #2f4a59;
+    font-size: x-large;
+  }
+    

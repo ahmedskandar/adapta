@@ -5,18 +5,22 @@
   border: 2px solid #f3f3f3;
   border-radius: 10px;
   padding: 20px;
+  background-color: white;
   height: 100%;
   width: 100%;
+  text-align: center;
 }
 
-.margin {
-  margin-top: 15px;
-}
 
 .container div span {
     color: #467184;
 }
 
+.container > div > h4 {
+  margin: 15px 0;
+}
+
 .btnContainer {
+  margin-top: 20px;
     text-align: center;
 }

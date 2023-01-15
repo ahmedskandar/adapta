@@ -3,6 +3,10 @@ export interface StatsCardI {
   scoreText: string;
 }
 
+export interface StatsCardPrimeI {
+  scoreText: string;
+}
+
 export interface WrapperI {
   children: React.ReactNode;
 }

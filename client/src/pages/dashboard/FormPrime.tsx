@@ -16,22 +16,22 @@ function FormPrime() {
   return (
     <aside className={classes.container}>
       <div>
-        <h4>Location</h4> <br />
+        <h4>Location</h4> 
         <span> LatLng -1.301368, 36.799972</span>
       </div>
 
       <div>
-        <h4>Planting period</h4> <br />
+        <h4>Planting period</h4> 
         <span> 03-2023</span>
       </div>
 
       <div>
-        <h4>Crop to be planted</h4> <br />
+        <h4>Crop to be planted</h4> 
         <span>Maize</span>
       </div>
 
       <div>
-        <h4>Biodiversity</h4> <br />
+        <h4>Biodiversity</h4> 
         <span>Non-protected area</span>
       </div>
 

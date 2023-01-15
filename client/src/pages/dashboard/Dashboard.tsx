@@ -1,33 +1,34 @@
 import React, { useState } from "react";
 import classes from "./Dashboard.module.css";
 import Form from "./Form";
-import StatsCard from "./StatsCard";
 import Map from "./Map";
 import CompositeCard from "./CompositeCard";
 import ReportCard from "./ReportCard";
 import ReportModal from "./ReportModal";
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux";
 import { FormSliceI } from "../../data/interfaces";
 import FormPrime from "./FormPrime";
-
+import StatsCard from "./StatsCard/StatsCard";
+import StatsCardPrime from "./StatsCard/StatsCardPrime";
 
 const Home: React.FC = () => {
-
-  const hasComputed = useSelector((state: FormSliceI) => state.form.hasComputed);
+  const hasComputed = useSelector(
+    (state: FormSliceI) => state.form.hasComputed
+  );
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModalHandler = () => {
     setIsModalOpen(true);
-  }
+  };
 
   const closeModalHandler = () => {
     setIsModalOpen(false);
-  } 
+  };
 
   return (
     <>
-    {isModalOpen && <ReportModal onClose={closeModalHandler} />}
+      {isModalOpen && <ReportModal onClose={closeModalHandler} />}
       <main className={classes.main}>
         <div className={classes.container}>
           <section className={classes.topSection}>
@@ -42,23 +43,35 @@ const Home: React.FC = () => {
                 <CompositeCard />
               </div>
               <div className={classes.reportContainer}>
-                <ReportCard onOpen={openModalHandler}/>
+                <ReportCard onOpen={openModalHandler} />
               </div>
             </div>
           </section>
           <section className={classes.statsSection}>
             <div>
               <div className={classes.statsContainer}>
-                <StatsCard riskText="High Risk" scoreText="Climate Score" />
+                {hasComputed ? (
+                  <StatsCardPrime scoreText="Climate Score"/>
+                ) : (
+                  <StatsCard riskText="High Risk" scoreText="Climate Score" />
+                )}
               </div>
               <div className={classes.statsContainer}>
-                <StatsCard riskText="Medium Risk" scoreText="Water Score" />
+                {hasComputed ? (
+                  <StatsCardPrime scoreText="Water Score"/>
+                ) : (
+                  <StatsCard riskText="Medium Risk" scoreText="Water Score" />
+                )}
               </div>
               <div className={classes.statsContainer}>
-                <StatsCard
-                  riskText="Low Risk"
-                  scoreText="Soil Suitability Score"
-                />
+                {hasComputed ? (
+                  <StatsCardPrime scoreText="Soil Suitability Score" />
+                ) : (
+                  <StatsCard
+                    riskText="Low Risk"
+                    scoreText="Soil Suitability Score"
+                  />
+                )}
               </div>
             </div>
           </section>

@@ -1,0 +1,24 @@
+.container {
+  width: 100%;
+  border: 2px solid #f3f3f3;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chartCont {
+  width: 35%;
+}
+
+.cont2 {
+  width: 55%;
+}
+
+.chart {
+  width: 100%;
+}
+
+
+

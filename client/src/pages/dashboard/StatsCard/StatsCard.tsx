@@ -1,17 +1,13 @@
-import React from "react";
-import classes from "./StatsCard.module.css";
-import chart from "../../assets/svg/PieChart.svg";
+import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
-import { StatsCardI } from "../../data/interfaces";
+import classes from './StatsCard.module.css'
+import StatsCardContainer from './StatsCardContainer'
+import { StatsCardI } from '../../../data/interfaces';
 
-const StatsCard: React.FC<StatsCardI> = ({ scoreText, riskText }) => {
+const StatsCard: React.FC <StatsCardI> = ({ scoreText, riskText }) => {
   return (
-    <div className={classes.container}>
-      <div className={classes.chartCont}>
-        <img src={chart} className={classes.chart} alt="" />
-      </div>
-      <div className={classes.cont2}>
+    <StatsCardContainer>
         <div className={classes.sec1}>
           <div className={classes.impact}>Impact</div>
           <div className={classes.score}>{scoreText}</div>
@@ -37,9 +33,8 @@ const StatsCard: React.FC<StatsCardI> = ({ scoreText, riskText }) => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
-};
+    </StatsCardContainer>
+  )
+}
 
-export default StatsCard;
+export default StatsCard
