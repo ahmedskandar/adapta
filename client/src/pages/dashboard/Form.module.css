@@ -43,16 +43,6 @@ form input[type="text"]::placeholder {
   text-align: center;
 }
 
-.computeBtn input {
-  background: #467184;
-  color: white;
-  font-size: .7vw;
-  width: 60%;
-  height: 29px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-}
 /*biodiversity*/
 
 .container2 {

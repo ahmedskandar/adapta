@@ -29,7 +29,7 @@ const StatsCard: React.FC<StatsCardI> = ({ scoreText, riskText }) => {
             <div>
               0 - 25% <br /> <b>Medium Risk</b>
             </div>
-          </div>{" "}
+          </div>
           <div className={classes.smallSec}>
             <FontAwesomeIcon className={classes.greenCircle} icon={faCircle} />
             <div>

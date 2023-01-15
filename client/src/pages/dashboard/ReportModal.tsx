@@ -3,12 +3,18 @@ import classes from "./ReportModal.module.css";
 import ReactDOM from "react-dom";
 import Card from "../../components/UI/Card";
 import { BackdropI, ModalOverlayI } from "../../data/interfaces";
+import Button from "../../components/UI/Button";
 
 const Backdrop: React.FC <BackdropI> = ({onClose}) => {
   return <div className={classes.backdrop} onClick={onClose}></div>;
 };
 
 const ModalOverlay: React.FC <ModalOverlayI>  = ({onClose}) => {
+
+  const downloadReportHandler = () => {
+
+  }
+
   return (
     <div className={classes.modal}>
       <header className={classes.header}>
@@ -105,8 +111,8 @@ const ModalOverlay: React.FC <ModalOverlayI>  = ({onClose}) => {
 
       <footer className={classes.footer}>
         <div>
-        <button onClick={onClose}>Close</button>
-        <button>Download</button>
+        <Button onClick={onClose}>Close</Button>
+        <Button onClick={downloadReportHandler}>Download</Button>
         </div>
       
       </footer>

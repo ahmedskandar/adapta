@@ -6,6 +6,7 @@ import tick from "../../assets/svg/tick.svg";
 import danger from "../../assets/svg/danger.svg";
 import { useDispatch } from 'react-redux'
 import { FormSliceActions } from "../../store/FormSlice";
+import Button from "../../components/UI/Button";
 
 const Form: React.FC = () => {
 
@@ -84,7 +85,7 @@ const Form: React.FC = () => {
           )}
         </div>
         <div className={classes.computeBtn}>
-          <input type="submit" value="COMPUTE SCORE" />
+           <Button onClick={onSubmitHandler} type="submit">COMPUTE SCORE</Button>
         </div>
       </form>
       <div className={classes.container2}>

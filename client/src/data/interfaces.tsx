@@ -13,7 +13,7 @@ export interface MetricInfoCardI {
   color: "red" | "green" | "orange";
 }
 
-export interface CardI {
+export interface ChildrenI {
   children: React.ReactNode;
 }
 
@@ -27,4 +27,9 @@ export interface ReportCardI {
 
 export interface BackdropI {
   onClose: () => void;
+}
+
+export interface ButtonI extends ChildrenI {
+  type?: "button" | "submit" | "reset" ;
+  onClick: (e: React.FormEvent) => void | (() => void);
 }
