@@ -6,8 +6,14 @@ import Map from "./Map";
 import CompositeCard from "./CompositeCard";
 import ReportCard from "./ReportCard";
 import ReportModal from "./ReportModal";
+import { useSelector } from 'react-redux'
+import { FormSliceI } from "../../data/interfaces";
+import FormPrime from "./FormPrime";
+
 
 const Home: React.FC = () => {
+
+  const hasComputed = useSelector((state: FormSliceI) => state.form.hasComputed);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -27,7 +33,7 @@ const Home: React.FC = () => {
           <section className={classes.topSection}>
             <div>
               <div className={classes.formContainer}>
-                <Form />
+                {hasComputed ? <FormPrime /> : <Form />}
               </div>
               <div className={classes.mapContainer}>
                 <Map />

@@ -31,5 +31,11 @@ export interface BackdropI {
 
 export interface ButtonI extends ChildrenI {
   type?: "button" | "submit" | "reset" ;
-  onClick: (e: React.FormEvent) => void | (() => void);
+  onClick?: (e: React.FormEvent) => void | (() => void);
 }
+
+export interface FormSliceI {
+  form: {
+    hasComputed: boolean
+  }
+} 

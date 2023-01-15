@@ -9,7 +9,7 @@ export const FormSlice = createSlice({
     initialState,
     reducers: {
         hasComputed(state) {
-            state.hasComputed = true
+            state.hasComputed = !state.hasComputed 
         }
     }
 })

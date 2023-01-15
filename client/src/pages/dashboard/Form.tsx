@@ -7,10 +7,12 @@ import danger from "../../assets/svg/danger.svg";
 import { useDispatch } from 'react-redux'
 import { FormSliceActions } from "../../store/FormSlice";
 import Button from "../../components/UI/Button";
+import { FormSliceI } from "../../data/interfaces";
 
 const Form: React.FC = () => {
 
   const dispatch = useDispatch();
+
 
   const [monthInputType, setMonthInputType] = useState("text");
 
@@ -36,13 +38,15 @@ const Form: React.FC = () => {
     const period = periodInputRef.current!.value;
     const crop = cropInputRef.current!.value;
 
-    console.log(location, period, crop);
+    /*Computational logic comes here*/
 
     dispatch(FormSliceActions.hasComputed())
 
     locationInputRef.current!.value = ''
     periodInputRef.current!.value = ''
     cropInputRef.current!.value = ''
+
+
 
   };
 
@@ -65,7 +69,7 @@ const Form: React.FC = () => {
           required
             ref={periodInputRef}
             onMouseOver={date}
-            type={monthInputType}
+            type={monthInputType} 
             placeholder="Select month"
           />
         </div>
@@ -85,7 +89,7 @@ const Form: React.FC = () => {
           )}
         </div>
         <div className={classes.computeBtn}>
-           <Button onClick={onSubmitHandler} type="submit">COMPUTE SCORE</Button>
+           <Button type="submit">COMPUTE SCORE</Button>
         </div>
       </form>
       <div className={classes.container2}>
