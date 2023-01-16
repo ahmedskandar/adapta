@@ -25,6 +25,9 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
     <!-- <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
@@ -98,6 +101,8 @@
             })
             .addTo(map);
 
+          **********  ??????
+
           var drawnItems = new L.FeatureGroup();
           map.addLayer(drawnItems);
           var drawControl = new L.Control.Draw({
@@ -131,6 +136,9 @@
               console.log(layer);
             });
           });
+
+          ********* ADDITION OF A POLYGON RED COLOUR I.T WHICH SHOWS THE PROHIBITED AREAS OF FARMING ON MAP
+          
           var shpfile = new L.Shapefile(
             "https://datascience.strathmore.edu/adapta/static/map/merged.zip",
             {
