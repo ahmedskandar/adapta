@@ -1,9 +1,9 @@
- .btn {
-    background: #467184;
-    color: white;
-    font-size: .7vw;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
- }
+.btn {
+  background: #467184;
+  color: white;
+  font-size: 0.7vw;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}

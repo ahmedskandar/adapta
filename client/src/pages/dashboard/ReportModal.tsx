@@ -5,15 +5,12 @@ import Card from "../../components/UI/Card";
 import { BackdropI, ModalOverlayI } from "../../data/interfaces";
 import Button from "../../components/UI/Button";
 
-const Backdrop: React.FC <BackdropI> = ({onClose}) => {
+const Backdrop: React.FC<BackdropI> = ({ onClose }) => {
   return <div className={classes.backdrop} onClick={onClose}></div>;
 };
 
-const ModalOverlay: React.FC <ModalOverlayI>  = ({onClose}) => {
-
-  const downloadReportHandler = () => {
-
-  }
+const ModalOverlay: React.FC<ModalOverlayI> = ({ onClose }) => {
+  const downloadReportHandler = () => {};
 
   return (
     <div className={classes.modal}>
@@ -54,28 +51,37 @@ const ModalOverlay: React.FC <ModalOverlayI>  = ({onClose}) => {
                 <br /> <br />
                 Rainfall score: <span className={classes.bold}>45.7 </span>
                 <br /> <br />
-                Aridity score: <span className={classes.bold}>16.1</span> <br /><br />
+                Aridity score: <span className={classes.bold}>16.1</span> <br />
+                <br />
                 Composite score: <span className={classes.bold}>33.6</span>
                 <br /> <br />
               </div>
               <div>
                 Water availability score:
-                <span className={classes.bold}> 60.0</span> <br /><br />
+                <span className={classes.bold}> 60.0</span> <br />
+                <br />
                 Water quality score: <span className={classes.bold}>52.2</span>
-                <br /><br />
+                <br />
+                <br />
                 Irrigation intensity score:
-                <span className={classes.bold}>69.8</span> <br /><br />
+                <span className={classes.bold}>69.8</span> <br />
+                <br />
                 Composite score: <span className={classes.bold}>60.0</span>
-                <br /><br />
+                <br />
+                <br />
               </div>
               <div>
                 Organic Carbon score: <span className={classes.bold}>31.8</span>
-                <br /><br />
-                Soil pH score: <span className={classes.bold}>88.6</span> <br /><br />
+                <br />
+                <br />
+                Soil pH score: <span className={classes.bold}>88.6</span> <br />
+                <br />
                 Soil Moisture score: <span className={classes.bold}>45.2</span>
-                <br /><br />
+                <br />
+                <br />
                 Composite score: <span className={classes.bold}>60.2</span>
-                <br /><br />
+                <br />
+                <br />
               </div>
             </div>
           </Card>
@@ -111,24 +117,24 @@ const ModalOverlay: React.FC <ModalOverlayI>  = ({onClose}) => {
 
       <footer className={classes.footer}>
         <div>
-        <Button onClick={onClose}>Close</Button>
-        <Button onClick={downloadReportHandler}>Download</Button>
+          <Button onClick={onClose}>Close</Button>
+
+          <Button onClick={downloadReportHandler}>Download</Button>
         </div>
-      
       </footer>
     </div>
   );
 };
 
-const ReportModal: React.FC <BackdropI> = ({onClose}) => {
+const ReportModal: React.FC<BackdropI> = ({ onClose }) => {
   return (
     <>
       {ReactDOM.createPortal(
-        <Backdrop onClose={onClose}/>,
+        <Backdrop onClose={onClose} />,
         document.getElementById("backdrop-root")!
       )}
       {ReactDOM.createPortal(
-        <ModalOverlay onClose={onClose}/>,
+        <ModalOverlay onClose={onClose} />,
         document.getElementById("overlay-root")!
       )}
     </>

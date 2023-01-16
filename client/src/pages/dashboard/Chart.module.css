@@ -1,0 +1,47 @@
+.indicator-1 {
+  transform: rotate(calc(0 * 265deg)) translateY(44%);
+  position: absolute;
+  z-index: 150;
+  width: calc(100% - 1.77vw);
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  width: 207px;
+  height: 200px;
+  align-items: center;
+}
+
+.indicator-1 img {
+  width: 2.5vw;
+}
+
+.chart {
+  text-align: center;
+  width: 207px;
+  height: 200px;
+}
+
+.chart > img {
+  aspect-ratio: 1/1;
+}
+
+.chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.m {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: absolute;
+  z-index: 200;
+  flex-direction: column;
+  margin: auto;
+  aspect-ratio: 1/1;
+}
+
+.m p {
+  font-size: 3vw;
+}

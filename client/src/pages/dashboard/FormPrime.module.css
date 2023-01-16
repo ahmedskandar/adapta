@@ -11,16 +11,26 @@
   text-align: center;
 }
 
-
-.container div span {
-    color: #467184;
+.container > div > span {
+  color: #467184;
 }
 
-.container > div > h4 {
+.container > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 15%;
+}
+
+.container > div:last-child {
+  display: inline;
+}
+
+/* .container > div > h4 {
   margin: 15px 0;
-}
+} */
 
 .btnContainer {
   margin-top: 20px;
-    text-align: center;
+  text-align: center;
 }

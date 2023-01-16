@@ -25,12 +25,32 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <!-- <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"
+      integrity="sha512-gc3xjCmIy673V6MyOAZhIW93xhM9ei1I+gLbmFjUHIjocENRsLX/QUE1htk5q1XV2D/iie/VQ8DXI6Vu8bexvQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    /> -->
+
+    <style></style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <div id="backdrop-root"></div>
     <div id="overlay-root"></div>
+
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -41,5 +61,94 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"
+      integrity="sha512-ozq8xQKq6urvuU6jNgkfqAmT7jKN2XumbrX1JiB3TnF7tI48DPI4Gy1GXKD/V3EExgAs1V+pRO7vwtS1LHg0Gw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.umd.js"></script>
+    <script src="https://unpkg.com/leaflet-simple-map-screenshoter"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCDB8_Ujflax5HYAFILZGAOmBfmjSeWes&libraries=places"></script>
+    <script>
+      setTimeout(
+        () => {
+          const map = L.map("map", { zoomControl: false }).setView(
+            [-1.3093245, 36.8103326],
+            14
+          );
+          var marker = L.marker([-1.3093245, 36.8103326]).addTo(map);
+
+          L.tileLayer("https://{s}.google.com/vt?lyrs=s,h&x={x}&y={y}&z={z}", {
+            maxZoom: 19,
+            subdomains: ["mt0", "mt1", "mt2", "mt3"],
+            attribution:
+              '&copy; <a href=https://www.protectedplanet.net/en">Protected planet</a>',
+          }).addTo(map);
+
+          L.control
+            .zoom({
+              position: "bottomright",
+            })
+            .addTo(map);
+
+          var drawnItems = new L.FeatureGroup();
+          map.addLayer(drawnItems);
+          var drawControl = new L.Control.Draw({
+            draw: {
+              polyline: false,
+              circlemarker: false,
+              circle: false,
+              rectangle: false,
+            },
+            edit: {
+              featureGroup: drawnItems,
+            },
+          });
+          map.addControl(drawControl);
+          map.on(L.Draw.Event.CREATED, function (e) {
+            var type = e.layerType,
+              layer = e.layer;
+            console.log(layer);
+            if (type === "marker") {
+            }
+
+            // Do whatever else you need to. (save to db; add to map etc)
+            drawnItems.eachLayer(function (layer) {
+              drawnItems.removeLayer(layer);
+            });
+            drawnItems.addLayer(layer);
+          });
+          map.on("draw:edited", function (e) {
+            let layers = e.layers;
+            layers.eachLayer(function (layer) {
+              console.log(layer);
+            });
+          });
+          var shpfile = new L.Shapefile(
+            "https://datascience.strathmore.edu/adapta/static/map/merged.zip",
+            {
+              style: function (feature) {
+                return {
+                  color: "transparent",
+                  fillColor: "red",
+                  fillOpacity: 0.45,
+                };
+              },
+            }
+          );
+          shpfile.addTo(map);
+        },
+        // the show/hide functions are passed as props
+
+        1000
+      );
+    </script> -->
   </body>
 </html>

@@ -51,14 +51,14 @@ const Home: React.FC = () => {
             <div>
               <div className={classes.statsContainer}>
                 {hasComputed ? (
-                  <StatsCardPrime scoreText="Climate Score"/>
+                  <StatsCardPrime scoreText="Climate Score" />
                 ) : (
                   <StatsCard riskText="High Risk" scoreText="Climate Score" />
                 )}
               </div>
               <div className={classes.statsContainer}>
                 {hasComputed ? (
-                  <StatsCardPrime scoreText="Water Score"/>
+                  <StatsCardPrime scoreText="Water Score" />
                 ) : (
                   <StatsCard riskText="Medium Risk" scoreText="Water Score" />
                 )}
