@@ -13,7 +13,7 @@ const App: React.FC = () => {
         <Header />
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/" element={<Chart />} />
+          {/* <Route path="/" element={<Chart />} /> */}
         </Routes>
         <Footer />
       </Wrapper>

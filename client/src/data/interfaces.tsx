@@ -1,6 +1,14 @@
 export interface StatsCardI {
   riskText: string;
   scoreText: string;
+  score: string;
+  value: number;
+}
+
+export interface StatsCardContainerI {
+  children: React.ReactNode;
+  score: string;
+  value: number;
 }
 
 export interface StatsCardPrimeI {
@@ -34,12 +42,17 @@ export interface BackdropI {
 }
 
 export interface ButtonI extends ChildrenI {
-  type?: "button" | "submit" | "reset" ;
+  type?: "button" | "submit" | "reset";
   onClick?: (e: React.FormEvent) => void | (() => void);
 }
 
 export interface FormSliceI {
   form: {
-    hasComputed: boolean
-  }
-} 
+    hasComputed: boolean;
+  };
+}
+
+export interface ChartI {
+  value: number;
+  score: string;
+}

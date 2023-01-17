@@ -5,9 +5,9 @@ import classes from './StatsCard.module.css'
 import StatsCardContainer from './StatsCardContainer'
 import { StatsCardI } from '../../../data/interfaces';
 
-const StatsCard: React.FC <StatsCardI> = ({ scoreText, riskText }) => {
+const StatsCard: React.FC <StatsCardI> = ({ scoreText, riskText, score, value }) => {
   return (
-    <StatsCardContainer>
+    <StatsCardContainer score={score} value={value}>
         <div className={classes.sec1}>
           <div className={classes.impact}>Impact</div>
           <div className={classes.score}>{scoreText}</div>

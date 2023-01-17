@@ -1,24 +1,21 @@
 .indicator-1 {
-  transform: rotate(calc(0 * 265deg)) translateY(44%);
   position: absolute;
   z-index: 150;
-  width: calc(100% - 1.77vw);
+  /* width: calc(100% - 1.77vw); */
   aspect-ratio: 1/1;
   display: flex;
   justify-content: center;
-  width: 207px;
-  height: 200px;
+  width: 10vw;
   align-items: center;
 }
 
 .indicator-1 img {
-  width: 2.5vw;
+  width: 2vw;
 }
 
 .chart {
   text-align: center;
-  width: 207px;
-  height: 200px;
+  width: 10vw;
 }
 
 .chart > img {
@@ -44,4 +41,27 @@
 
 .m p {
   font-size: 3vw;
+}
+
+
+@media only screen and (max-width: 992px) {
+ .indicator-1, .chart {
+  width: 15vw;
+ }
+
+ .indicator-1 img {
+  width: 3vw;
+}
+
+
+}
+
+@media only screen and (max-width: 650px) {
+
+  .indicator-1, .chart {
+    width: 25vw;
+   }
+.indicator-1 img {
+  width: 5vw;
+}
 }

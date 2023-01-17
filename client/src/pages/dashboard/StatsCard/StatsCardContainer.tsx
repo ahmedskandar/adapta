@@ -1,15 +1,15 @@
 import React from "react";
 import classes from "./StatsCardContainer.module.css";
-import chart from "../../../assets/svg/PieChart.svg";
-import { ChildrenI } from "../../../data/interfaces";
+import { StatsCardContainerI } from "../../../data/interfaces";
+import Chart from "../Chart";
 
 
 
-const StatsCardContainer: React.FC <ChildrenI> = ({ children }) => {
+const StatsCardContainer: React.FC <StatsCardContainerI> = ({ children, score, value }) => {
   return (
     <div className={classes.container}>
       <div className={classes.chartCont}>
-        <img src={chart} className={classes.chart} alt="" />
+        <Chart value={value} score={score}/>
       </div>
       <div className={classes.cont2}>
         { children }

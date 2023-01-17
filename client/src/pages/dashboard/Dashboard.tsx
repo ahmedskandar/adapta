@@ -53,14 +53,14 @@ const Home: React.FC = () => {
                 {hasComputed ? (
                   <StatsCardPrime scoreText="Climate Score" />
                 ) : (
-                  <StatsCard riskText="High Risk" scoreText="Climate Score" />
+                  <StatsCard score="50" value={.5} riskText="High Risk" scoreText="Climate Score" />
                 )}
               </div>
               <div className={classes.statsContainer}>
                 {hasComputed ? (
                   <StatsCardPrime scoreText="Water Score" />
                 ) : (
-                  <StatsCard riskText="Medium Risk" scoreText="Water Score" />
+                  <StatsCard score="50" value={0} riskText="Medium Risk" scoreText="Water Score" />
                 )}
               </div>
               <div className={classes.statsContainer}>
@@ -68,6 +68,7 @@ const Home: React.FC = () => {
                   <StatsCardPrime scoreText="Soil Suitability Score" />
                 ) : (
                   <StatsCard
+                  score="100" value={1}
                     riskText="Low Risk"
                     scoreText="Soil Suitability Score"
                   />
