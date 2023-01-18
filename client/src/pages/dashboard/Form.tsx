@@ -13,6 +13,17 @@ const Form: React.FC = () => {
 
   const dispatch = useDispatch();
 
+  const currDate = new Date()
+
+  const currYear = currDate.getFullYear()
+  let currMonth: string | number = currDate.getMonth() + 1
+  
+  if(currMonth < 10) {
+    currMonth = `0${currMonth}`
+  }
+
+  const min = `${currYear}-${currMonth}`
+  const max = `${currYear+10}-${currMonth}`
 
   const [monthInputType, setMonthInputType] = useState("text");
 
@@ -40,7 +51,7 @@ const Form: React.FC = () => {
 
     /*Computational logic comes here*/
 
-    dispatch(FormSliceActions.hasComputed())
+    dispatch(FormSliceActions.compute({location, period, crop}))
 
     locationInputRef.current!.value = ''
     periodInputRef.current!.value = ''
@@ -59,6 +70,7 @@ const Form: React.FC = () => {
           required
             ref={locationInputRef}
             type="text"
+         
             placeholder="Enter Location Coordinates"
             id="location"
           />
@@ -68,7 +80,9 @@ const Form: React.FC = () => {
           <input
           required
             ref={periodInputRef}
-            onMouseOver={date}
+            onFocus={date}
+            max={max}
+            min={min}
             type={monthInputType} 
             placeholder="Select month"
           />
@@ -76,15 +90,15 @@ const Form: React.FC = () => {
         <div className={`${classes.left} ${classes.margin}`}>
           <label htmlFor="crop">Select Crop</label> <br />
           {cropInputType === false ? (
-            <input type="text" onMouseOver={crop} placeholder="Select crop" />
+            <input type="text" onFocus={crop} placeholder="Select crop" />
           ) : (
             <select required ref={cropInputRef} className={classes.select}>
               <option value="" selected disabled hidden>
                 Select a crop
               </option>
-              <option value="1">Maize</option>
-              <option value="2">Beans</option>
-              <option value="3">Coffee</option>
+              <option value="Maize">Maize</option>
+              <option value="Beans">Beans</option>
+              <option value="Coffee">Coffee</option>
             </select>
           )}
         </div>

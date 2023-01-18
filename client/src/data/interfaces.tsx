@@ -49,6 +49,9 @@ export interface ButtonI extends ChildrenI {
 export interface FormSliceI {
   form: {
     hasComputed: boolean;
+    crop: string;
+    period: string;
+    location: string
   };
 }
 

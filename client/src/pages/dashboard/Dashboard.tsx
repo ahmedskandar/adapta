@@ -60,7 +60,7 @@ const Home: React.FC = () => {
                 {hasComputed ? (
                   <StatsCardPrime scoreText="Water Score" />
                 ) : (
-                  <StatsCard score="50" value={0} riskText="Medium Risk" scoreText="Water Score" />
+                  <StatsCard score="50" value={0.5} riskText="Medium Risk" scoreText="Water Score" />
                 )}
               </div>
               <div className={classes.statsContainer}>

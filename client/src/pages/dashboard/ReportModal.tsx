@@ -2,15 +2,19 @@ import React from "react";
 import classes from "./ReportModal.module.css";
 import ReactDOM from "react-dom";
 import Card from "../../components/UI/Card";
-import { BackdropI, ModalOverlayI } from "../../data/interfaces";
+import { BackdropI, FormSliceI, ModalOverlayI } from "../../data/interfaces";
 import Button from "../../components/UI/Button";
+import { useSelector } from "react-redux";
 
 const Backdrop: React.FC<BackdropI> = ({ onClose }) => {
   return <div className={classes.backdrop} onClick={onClose}></div>;
 };
 
 const ModalOverlay: React.FC<ModalOverlayI> = ({ onClose }) => {
+
   const downloadReportHandler = () => {};
+
+  const {location, period, crop} = useSelector((state: FormSliceI) => state.form)
 
   return (
     <div className={classes.modal}>
@@ -24,11 +28,11 @@ const ModalOverlay: React.FC<ModalOverlayI> = ({ onClose }) => {
             <h3 className={classes.h3Aside}>Details</h3>
             <div>Map</div>
             <h3 className={classes.h3Aside}>Location</h3>
-            LatLng -1.304457, 36.793716
+            {location}
             <h3 className={classes.h3Aside}>Period</h3>
-            03-2023
+            {period}
             <h3 className={classes.h3Aside}>Crops to be planted</h3>
-            Maize
+            {crop}
             <h3 className={classes.h3Aside}>Biodiversity</h3>
             Non-protected area
           </div>

@@ -2,15 +2,15 @@ import React from "react";
 import classes from "./CompositeCard.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
-import chart from "../../assets/svg/PieChart.svg";
 import MetricInfoCard from "../../components/UI/MetricInfoCard";
+import Chart from "./Chart";
 
 const CompositeCard: React.FC = () => {
   return (
     <div className={`${classes.container} ${classes.tooltip}`}>
       <h3 className={classes.heading}>COMPOSITE SCORE</h3>
-      <div>
-        <img className={classes.chart} src={chart} alt="" />
+      <div className={classes.chart}>
+        <Chart score="0" value={0}/>
       </div>
       <div className={classes.iconContainer}>
         <FontAwesomeIcon className={classes.icon} icon={faCircleInfo} />

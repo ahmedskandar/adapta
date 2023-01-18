@@ -26,13 +26,13 @@ const Map: React.FC = () => {
       });
     };
 
-    const onError = (error: any) => {
-      setLocation({
-        loaded: true,
-        error,
-      });
-    };
-
+      const onError = (error: any) => {
+        setLocation({
+          loaded: true,
+          error,
+        });
+      };
+      
     useEffect(() => {
       if (!("geolocation" in navigator)) {
         onError({

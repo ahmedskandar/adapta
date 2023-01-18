@@ -1,6 +1,5 @@
 .indicator-1 {
   position: absolute;
-  z-index: 150;
   /* width: calc(100% - 1.77vw); */
   aspect-ratio: 1/1;
   display: flex;
@@ -33,7 +32,6 @@
   justify-content: center;
   align-content: center;
   position: absolute;
-  z-index: 200;
   flex-direction: column;
   margin: auto;
   aspect-ratio: 1/1;
