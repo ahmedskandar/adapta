@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux'
 import { FormSliceActions } from "../../store/FormSlice";
 import Button from "../../components/UI/Button";
 import { FormSliceI } from "../../data/interfaces";
+import { StatsCardPrimeSliceActions } from "../../store/StatsCardPrimeSlice";
 
 const Form: React.FC = () => {
 
@@ -49,15 +50,23 @@ const Form: React.FC = () => {
     const period = periodInputRef.current!.value;
     const crop = cropInputRef.current!.value;
 
-    /*Computational logic comes here*/
+    /*HTTP req with the form date done here*/
 
+    /* Whatever returns in the promise save it in the StatsCard slice store */
+
+    /*Saving the returned values in a variable to store them in redux for use in someplace else*/
+
+    
+    let climateScore = 89, waterScore = 25, soilScore = 100, compositeScore = 10
+
+    dispatch(StatsCardPrimeSliceActions.store({climateScore, waterScore, soilScore, compositeScore}))        
+    
     dispatch(FormSliceActions.compute({location, period, crop}))
+
 
     locationInputRef.current!.value = ''
     periodInputRef.current!.value = ''
     cropInputRef.current!.value = ''
-
-
 
   };
 

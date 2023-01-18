@@ -4,6 +4,7 @@ import classes from "./FormPrime.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { FormSliceActions } from "../../store/FormSlice";
 import { FormSliceI } from "../../data/interfaces";
+import { StatsCardPrimeSliceActions } from "../../store/StatsCardPrimeSlice";
 
 function FormPrime() {
 
@@ -12,6 +13,7 @@ function FormPrime() {
 
   const newScoreHandler = () => {
     dispatch(FormSliceActions.resetComputation());
+    dispatch(StatsCardPrimeSliceActions.reset())
   };
 
   return (

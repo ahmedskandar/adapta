@@ -6,12 +6,15 @@ import CompositeCard from "./CompositeCard";
 import ReportCard from "./ReportCard";
 import ReportModal from "./ReportModal";
 import { useSelector } from "react-redux";
-import { FormSliceI } from "../../data/interfaces";
+import { FormSliceI, StatsCardPrimeSliceI } from "../../data/interfaces";
 import FormPrime from "./FormPrime";
 import StatsCard from "./StatsCard/StatsCard";
 import StatsCardPrime from "./StatsCard/StatsCardPrime";
 
 const Home: React.FC = () => {
+
+  const StatsCardPrimeStore = useSelector((state: StatsCardPrimeSliceI) => state.StatsCard)
+
   const hasComputed = useSelector(
     (state: FormSliceI) => state.form.hasComputed
   );
@@ -51,27 +54,35 @@ const Home: React.FC = () => {
             <div>
               <div className={classes.statsContainer}>
                 {hasComputed ? (
-                  <StatsCardPrime scoreText="Climate Score" />
-                ) : (
-                  <StatsCard score="50" value={.5} riskText="High Risk" scoreText="Climate Score" />
-                )}
-              </div>
-              <div className={classes.statsContainer}>
-                {hasComputed ? (
-                  <StatsCardPrime scoreText="Water Score" />
-                ) : (
-                  <StatsCard score="50" value={0.5} riskText="Medium Risk" scoreText="Water Score" />
-                )}
-              </div>
-              <div className={classes.statsContainer}>
-                {hasComputed ? (
-                  <StatsCardPrime scoreText="Soil Suitability Score" />
-                ) : (
-                  <StatsCard
-                  score="100" value={1}
-                    riskText="Low Risk"
-                    scoreText="Soil Suitability Score"
+                  <StatsCardPrime
+                    value={StatsCardPrimeStore.climateScore/100}
+                    heading="Climate Score"
+                    score={StatsCardPrimeStore.climateScore}
                   />
+                ) : (
+                  <StatsCard score="--" value={0} heading="" />
+                )}
+              </div>
+              <div className={classes.statsContainer}>
+                {hasComputed ? (
+                  <StatsCardPrime
+                    value={StatsCardPrimeStore.waterScore/100}
+                    heading="Water Score"
+                    score={StatsCardPrimeStore.waterScore}
+                  />
+                ) : (
+                  <StatsCard score="--" value={0} heading="" />
+                )}
+              </div>
+              <div className={classes.statsContainer}>
+                {hasComputed ? (
+                  <StatsCardPrime
+                    value={StatsCardPrimeStore.soilScore/100}
+                    heading="Soil Suitability Score"
+                    score={StatsCardPrimeStore.soilScore}
+                  />
+                ) : (
+                  <StatsCard score="--" value={0} heading="" />
                 )}
               </div>
             </div>

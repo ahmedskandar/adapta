@@ -1,18 +1,18 @@
+export interface StatsCardPrimeSliceI {
+  StatsCard: {
+    climateScore: number
+    waterScore: number
+    soilScore: number
+    compositeScore: number
+  }
+}
+
+
 export interface StatsCardI {
-  riskText: string;
-  scoreText: string;
-  score: string;
-  value: number;
-}
-
-export interface StatsCardContainerI {
-  children: React.ReactNode;
-  score: string;
-  value: number;
-}
-
-export interface StatsCardPrimeI {
-  scoreText: string;
+  score?: number | string;
+  value?: number;
+  heading?: string
+  children?: React.ReactNode
 }
 
 export interface WrapperI {
@@ -56,6 +56,6 @@ export interface FormSliceI {
 }
 
 export interface ChartI {
-  value: number;
-  score: string;
+  value?: number;
+  score?: number | string;
 }
