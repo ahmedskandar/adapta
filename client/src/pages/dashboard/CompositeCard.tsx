@@ -5,11 +5,11 @@ import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import MetricInfoCard from "../../components/UI/MetricInfoCard";
 import Chart from "./Chart";
 import { useSelector } from 'react-redux'
-import { StatsCardPrimeSliceI } from "../../data/interfaces";
+import { ScoresSliceI } from "../../data/interfaces";
 
 const CompositeCard: React.FC = () => {
 
-  const StatsCardPrimeStore = useSelector((state: StatsCardPrimeSliceI) => state.StatsCard)
+  const StatsCardPrimeStore = useSelector((state: ScoresSliceI) => state.ScoresSlice)
 
 
   return (

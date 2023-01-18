@@ -4,37 +4,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import tick from "../../assets/svg/tick.svg";
 import danger from "../../assets/svg/danger.svg";
-import { useDispatch } from 'react-redux'
+import { useDispatch } from "react-redux";
 import { FormSliceActions } from "../../store/FormSlice";
 import Button from "../../components/UI/Button";
-import { FormSliceI } from "../../data/interfaces";
-import { StatsCardPrimeSliceActions } from "../../store/StatsCardPrimeSlice";
+import { calcDate } from "../../data/Functions";
+import { ScoresSliceActions } from "../../store/ScoresSlice";
 
 const Form: React.FC = () => {
-
   const dispatch = useDispatch();
 
-  const currDate = new Date()
-
-  const currYear = currDate.getFullYear()
-  let currMonth: string | number = currDate.getMonth() + 1
-  
-  if(currMonth < 10) {
-    currMonth = `0${currMonth}`
-  }
-
-  const min = `${currYear}-${currMonth}`
-  const max = `${currYear+10}-${currMonth}`
+  const [min, max] = calcDate();
 
   const [monthInputType, setMonthInputType] = useState("text");
 
   const [cropInputType, setCropInputType] = useState(false);
 
-  const date = () => {
+  const dateType = () => {
     setMonthInputType("month");
   };
 
-  const crop = () => {
+  const cropType = () => {
     setCropInputType(true);
   };
 
@@ -43,31 +32,34 @@ const Form: React.FC = () => {
   const cropInputRef = useRef<HTMLSelectElement>(null);
 
   const onSubmitHandler = (e: React.FormEvent) => {
-
     e.preventDefault();
 
     const location = locationInputRef.current!.value;
     const period = periodInputRef.current!.value;
     const crop = cropInputRef.current!.value;
 
-    /*HTTP req with the form date done here*/
+    /*Fetching api goes here*/
+    let climateScore = 79,
+      waterScore = 25,
+      soilScore = 100,
+      compositeScore = 50,
+      aridityScore = 68.5
+    /**Then Store the fetched values in redux */
+    dispatch(
+      ScoresSliceActions.store({
+        climateScore,
+        waterScore,
+        soilScore,
+        compositeScore,
+        aridityScore
+      })
+    );
 
-    /* Whatever returns in the promise save it in the StatsCard slice store */
+    dispatch(FormSliceActions.compute({ location, period, crop }));
 
-    /*Saving the returned values in a variable to store them in redux for use in someplace else*/
-
-    
-    let climateScore = 89, waterScore = 25, soilScore = 100, compositeScore = 10
-
-    dispatch(StatsCardPrimeSliceActions.store({climateScore, waterScore, soilScore, compositeScore}))        
-    
-    dispatch(FormSliceActions.compute({location, period, crop}))
-
-
-    locationInputRef.current!.value = ''
-    periodInputRef.current!.value = ''
-    cropInputRef.current!.value = ''
-
+    locationInputRef.current!.value = "";
+    periodInputRef.current!.value = "";
+    cropInputRef.current!.value = "";
   };
 
   return (
@@ -76,10 +68,9 @@ const Form: React.FC = () => {
         <div className={classes.left}>
           <label htmlFor="location">Search Location</label> <br />
           <input
-          required
+            required
             ref={locationInputRef}
             type="text"
-         
             placeholder="Enter Location Coordinates"
             id="location"
           />
@@ -87,19 +78,19 @@ const Form: React.FC = () => {
         <div className={`${classes.left} ${classes.margin}`}>
           <label htmlFor="time">Select Period To Plant</label> <br />
           <input
-          required
+            required
             ref={periodInputRef}
-            onFocus={date}
+            onFocus={dateType}
             max={max}
             min={min}
-            type={monthInputType} 
+            type={monthInputType}
             placeholder="Select month"
           />
         </div>
         <div className={`${classes.left} ${classes.margin}`}>
           <label htmlFor="crop">Select Crop</label> <br />
           {cropInputType === false ? (
-            <input type="text" onFocus={crop} placeholder="Select crop" />
+            <input type="text" onFocus={cropType} placeholder="Select crop" />
           ) : (
             <select required ref={cropInputRef} className={classes.select}>
               <option value="" selected disabled hidden>
@@ -112,7 +103,7 @@ const Form: React.FC = () => {
           )}
         </div>
         <div className={classes.computeBtn}>
-           <Button type="submit">COMPUTE SCORE</Button>
+          <Button type="submit">COMPUTE SCORE</Button>
         </div>
       </form>
       <div className={classes.container2}>
@@ -129,7 +120,12 @@ const Form: React.FC = () => {
             </span>
           </div>
         </div>
-          <img className={classes.info} src={tick} title="Non protected area" alt="" />
+        <img
+          className={classes.info}
+          src={tick}
+          title="Non protected area"
+          alt=""
+        />
       </div>
     </aside>
   );

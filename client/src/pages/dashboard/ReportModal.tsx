@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./ReportModal.module.css";
 import ReactDOM from "react-dom";
 import Card from "../../components/UI/Card";
-import { BackdropI, FormSliceI, ModalOverlayI } from "../../data/interfaces";
+import { BackdropI, FormSliceI, ModalOverlayI, ScoresSliceI } from "../../data/interfaces";
 import Button from "../../components/UI/Button";
 import { useSelector } from "react-redux";
 
@@ -12,9 +12,12 @@ const Backdrop: React.FC<BackdropI> = ({ onClose }) => {
 
 const ModalOverlay: React.FC<ModalOverlayI> = ({ onClose }) => {
 
+  
   const downloadReportHandler = () => {};
 
   const {location, period, crop} = useSelector((state: FormSliceI) => state.form)
+
+  const scoreValues= useSelector((state: ScoresSliceI) => state.ScoresSlice)
 
   return (
     <div className={classes.modal}>
@@ -41,7 +44,7 @@ const ModalOverlay: React.FC<ModalOverlayI> = ({ onClose }) => {
         <div className={classes.mainArea}>
           <Card>
             <h3 className={classes.h3}>Detailed Credit Report Analysis</h3>
-            <p>Your credit score is 49.5. You have a fair credit score.</p>
+            <p>Your credit score is {scoreValues.creditScore}. You have a fair credit score.</p>
           </Card>
           <Card>
             <h3 className={classes.h3}>Crop Thresholds</h3>
@@ -51,39 +54,39 @@ const ModalOverlay: React.FC<ModalOverlayI> = ({ onClose }) => {
             <h3 className={classes.h3}>Score Breakdown</h3>
             <div className={classes.scoreBreakdown}>
               <div>
-                Drought score: <span className={classes.bold}> 39.2 </span>
+                Drought score: <span className={classes.bold}> {scoreValues.droughtScore} </span>
                 <br /> <br />
-                Rainfall score: <span className={classes.bold}>45.7 </span>
+                Rainfall score: <span className={classes.bold}>{scoreValues.rainfallScore} </span>
                 <br /> <br />
-                Aridity score: <span className={classes.bold}>16.1</span> <br />
+                Aridity score: <span className={classes.bold}>{scoreValues.aridityScore}</span> <br />
                 <br />
-                Composite score: <span className={classes.bold}>33.6</span>
+                Composite score: <span className={classes.bold}>{scoreValues.climateScore}</span>
                 <br /> <br />
               </div>
               <div>
                 Water availability score:
-                <span className={classes.bold}> 60.0</span> <br />
+                <span className={classes.bold}> {scoreValues.waterAvailabilityScore}</span> <br />
                 <br />
-                Water quality score: <span className={classes.bold}>52.2</span>
+                Water quality score: <span className={classes.bold}>{scoreValues.waterQualityScore}</span>
                 <br />
                 <br />
                 Irrigation intensity score:
-                <span className={classes.bold}>69.8</span> <br />
+                <span className={classes.bold}>{scoreValues.irrigationScore}</span> <br />
                 <br />
-                Composite score: <span className={classes.bold}>60.0</span>
+                Composite score: <span className={classes.bold}>{scoreValues.waterScore}</span>
                 <br />
                 <br />
               </div>
               <div>
-                Organic Carbon score: <span className={classes.bold}>31.8</span>
+                Organic Carbon score: <span className={classes.bold}>{scoreValues.organicCarbonScore}</span>
                 <br />
                 <br />
-                Soil pH score: <span className={classes.bold}>88.6</span> <br />
+                Soil pH score: <span className={classes.bold}>{scoreValues.soilPHScore}</span> <br />
                 <br />
-                Soil Moisture score: <span className={classes.bold}>45.2</span>
+                Soil Moisture score: <span className={classes.bold}>{scoreValues.soilMoistureScore}</span>
                 <br />
                 <br />
-                Composite score: <span className={classes.bold}>60.2</span>
+                Composite score: <span className={classes.bold}>{scoreValues.soilScore}</span>
                 <br />
                 <br />
               </div>

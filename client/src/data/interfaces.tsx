@@ -1,18 +1,27 @@
-export interface StatsCardPrimeSliceI {
-  StatsCard: {
-    climateScore: number
-    waterScore: number
-    soilScore: number
-    compositeScore: number
-  }
+export interface ScoresSliceI {
+  ScoresSlice: {
+    climateScore: number;
+    waterScore: number;
+    soilScore: number;
+    compositeScore: number;
+    droughtScore: number;
+    rainfallScore: number;
+    aridityScore: number;
+    waterAvailabilityScore: number;
+    waterQualityScore: number;
+    irrigationScore: number;
+    organicCarbonScore: number;
+    soilPHScore: number;
+    soilMoistureScore: number;
+    creditScore: number;
+  };
 }
-
 
 export interface StatsCardI {
   score?: number | string;
   value?: number;
-  heading?: string
-  children?: React.ReactNode
+  heading?: string;
+  children?: React.ReactNode;
 }
 
 export interface WrapperI {
@@ -51,7 +60,7 @@ export interface FormSliceI {
     hasComputed: boolean;
     crop: string;
     period: string;
-    location: string
+    location: string;
   };
 }
 

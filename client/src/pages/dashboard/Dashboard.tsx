@@ -6,14 +6,14 @@ import CompositeCard from "./CompositeCard";
 import ReportCard from "./ReportCard";
 import ReportModal from "./ReportModal";
 import { useSelector } from "react-redux";
-import { FormSliceI, StatsCardPrimeSliceI } from "../../data/interfaces";
+import { FormSliceI, ScoresSliceI } from "../../data/interfaces";
 import FormPrime from "./FormPrime";
 import StatsCard from "./StatsCard/StatsCard";
 import StatsCardPrime from "./StatsCard/StatsCardPrime";
 
 const Home: React.FC = () => {
 
-  const StatsCardPrimeStore = useSelector((state: StatsCardPrimeSliceI) => state.StatsCard)
+  const scoreValues = useSelector((state: ScoresSliceI) => state.ScoresSlice)
 
   const hasComputed = useSelector(
     (state: FormSliceI) => state.form.hasComputed
@@ -55,9 +55,9 @@ const Home: React.FC = () => {
               <div className={classes.statsContainer}>
                 {hasComputed ? (
                   <StatsCardPrime
-                    value={StatsCardPrimeStore.climateScore/100}
+                    value={scoreValues.climateScore/100}
                     heading="Climate Score"
-                    score={StatsCardPrimeStore.climateScore}
+                    score={scoreValues.climateScore}
                   />
                 ) : (
                   <StatsCard score="--" value={0} heading="" />
@@ -66,9 +66,9 @@ const Home: React.FC = () => {
               <div className={classes.statsContainer}>
                 {hasComputed ? (
                   <StatsCardPrime
-                    value={StatsCardPrimeStore.waterScore/100}
+                    value={scoreValues.waterScore/100}
                     heading="Water Score"
-                    score={StatsCardPrimeStore.waterScore}
+                    score={scoreValues.waterScore}
                   />
                 ) : (
                   <StatsCard score="--" value={0} heading="" />
@@ -77,9 +77,9 @@ const Home: React.FC = () => {
               <div className={classes.statsContainer}>
                 {hasComputed ? (
                   <StatsCardPrime
-                    value={StatsCardPrimeStore.soilScore/100}
+                    value={scoreValues.soilScore/100}
                     heading="Soil Suitability Score"
-                    score={StatsCardPrimeStore.soilScore}
+                    score={scoreValues.soilScore}
                   />
                 ) : (
                   <StatsCard score="--" value={0} heading="" />
