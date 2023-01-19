@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux";
 
 export const calcDate = () => {
   const currDate = new Date();

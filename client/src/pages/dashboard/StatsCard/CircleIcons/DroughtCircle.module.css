@@ -1,0 +1,10 @@
+.container {
+    display: flex;
+    gap: 15px;
+}
+
+.icon {
+    height: 8px;
+    color: white;
+    border-radius: 100%;
+}

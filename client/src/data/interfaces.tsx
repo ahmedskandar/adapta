@@ -1,3 +1,5 @@
+import { enumScore } from "./enums";
+
 export interface ScoresSliceI {
   ScoresSlice: {
     climateScore: number;
@@ -67,4 +69,13 @@ export interface FormSliceI {
 export interface ChartI {
   value?: number;
   score?: number | string;
+}
+
+export interface DroughtCircleI {
+  score: enumScore;
+  tooltip1: string;
+  tooltip2: string;
+  tooltip3: string;
+  tooltip4: string;
+  tooltip5: string;
 }
