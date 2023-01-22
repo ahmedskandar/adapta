@@ -1,16 +1,15 @@
 import React from "react";
-import classes from "./StatsCardContainer.module.css";
-import { useState } from "react";
-import { FormSliceI, ScoresSliceI, StatsCardI } from "../../../data/interfaces";
+import classes from "./StatsCard.module.css";
+import { ScoresSliceI, StatsCardI } from "../../data/interfaces";
 import { useSelector } from "react-redux";
-import { enumSliderColor } from "../../../data/enums";
-import Chart from "../Chart";
-import Slider from "../../../components/UI/Slider";
+import { enumSliderColor } from "../../data/enums";
+import Chart from "./Chart";
+import Slider from "../../components/UI/Slider";
 
 
 
 
-const StatsCardContainer: React.FC<StatsCardI> = ({ heading, value, score }) => {
+const StatsCard: React.FC<StatsCardI> = ({ heading, value, score }) => {
 
   const scoreValues = useSelector((state: ScoresSliceI) => state.ScoresSlice);
 
@@ -204,4 +203,4 @@ const StatsCardContainer: React.FC<StatsCardI> = ({ heading, value, score }) => 
   );
 };
 
-export default StatsCardContainer;
+export default StatsCard;

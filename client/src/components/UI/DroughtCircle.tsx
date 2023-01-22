@@ -3,8 +3,8 @@ import classes from "./DroughtCircle.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
-import { DroughtCircleI, ScoresSliceI } from "../../../../data/interfaces";
-import { enumScore } from "../../../../data/enums";
+import { DroughtCircleI, ScoresSliceI } from "../../data/interfaces";
+import { enumScore } from "../../data/enums";
 
 const DroughtCircle: React.FC<DroughtCircleI> = ({ score, tooltip1, tooltip2, tooltip3, tooltip4, tooltip5 }) => {
   const scoreValues = useSelector((state: ScoresSliceI) => state.ScoresSlice);
