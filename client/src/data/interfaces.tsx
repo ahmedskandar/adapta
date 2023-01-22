@@ -82,6 +82,6 @@ export interface DroughtCircleI {
 
 export interface SliderI {
   sliderColor: enumSliderColor;
-  value: number
+  value: number | string
   optimalScore: number
 }

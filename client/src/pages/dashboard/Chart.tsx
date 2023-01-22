@@ -2,9 +2,14 @@ import React from "react";
 import classes from "./Chart.module.css";
 import chart from "../../assets/svg/PieChart.svg";
 import indicator from '../../assets/svg/indicator.svg'
-import { ChartI } from "../../data/interfaces";
+import { ChartI, FormSliceI } from "../../data/interfaces";
+import { useSelector } from 'react-redux'
 
 const Chart: React.FC <ChartI>  = ({value, score}) => {
+
+  const hasComputed = useSelector((state: FormSliceI) => state.form.hasComputed)
+
+  hasComputed ? score = score : score = "--"
 
   return (
     <div className={classes.chart}>

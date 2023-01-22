@@ -10,6 +10,7 @@ import { FormSliceI, ScoresSliceI } from "../../data/interfaces";
 import FormPrime from "./FormPrime";
 import StatsCard from "./StatsCard/StatsCard";
 import StatsCardPrime from "./StatsCard/StatsCardPrime";
+import StatsCardContainer from "./StatsCard/StatsCardContainer";
 
 const Home: React.FC = () => {
 
@@ -53,37 +54,19 @@ const Home: React.FC = () => {
           <section className={classes.statsSection}>
             <div>
               <div className={classes.statsContainer}>
-                {hasComputed ? (
-                  <StatsCardPrime
-                    value={scoreValues.climateScore/100}
+                <StatsCardContainer value={scoreValues.climateScore/100}
                     heading="Climate Score"
-                    score={scoreValues.climateScore}
-                  />
-                ) : (
-                  <StatsCard score="--" value={0} heading="" />
-                )}
+                    score={scoreValues.climateScore} />
               </div>
               <div className={classes.statsContainer}>
-                {hasComputed ? (
-                  <StatsCardPrime
-                    value={scoreValues.waterScore/100}
-                    heading="Water Score"
-                    score={scoreValues.waterScore}
-                  />
-                ) : (
-                  <StatsCard score="--" value={0} heading="" />
-                )}
+              <StatsCardContainer value={scoreValues.waterScore/100}
+                    heading="Climate Score"
+                    score={scoreValues.waterScore} />
               </div>
               <div className={classes.statsContainer}>
-                {hasComputed ? (
-                  <StatsCardPrime
-                    value={scoreValues.soilScore/100}
-                    heading="Soil Suitability Score"
-                    score={scoreValues.soilScore}
-                  />
-                ) : (
-                  <StatsCard score="--" value={0} heading="" />
-                )}
+              <StatsCardContainer value={scoreValues.soilScore/100}
+                    heading="Climate Score"
+                    score={scoreValues.soilScore}/>
               </div>
             </div>
           </section>
