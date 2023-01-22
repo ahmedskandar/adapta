@@ -10,3 +10,9 @@ export enum enumScore {
   soilPHScore,
   soilCationScore,
 }
+
+export enum enumSliderColor {
+  low = "yellow",
+  optimal = "green",
+  high = "red"
+}

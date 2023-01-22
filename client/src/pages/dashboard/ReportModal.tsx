@@ -67,7 +67,7 @@ const ModalOverlay: React.FC<ModalOverlayI> = ({ onClose }) => {
                 Water availability score:
                 <span className={classes.bold}> {scoreValues.waterAvailabilityScore}</span> <br />
                 <br />
-                Water quality score: <span className={classes.bold}>{scoreValues.waterQualityScore}</span>
+                Water erosion score: <span className={classes.bold}>{scoreValues.waterErosionScore}</span>
                 <br />
                 <br />
                 Irrigation intensity score:
@@ -83,7 +83,7 @@ const ModalOverlay: React.FC<ModalOverlayI> = ({ onClose }) => {
                 <br />
                 Soil pH score: <span className={classes.bold}>{scoreValues.soilPHScore}</span> <br />
                 <br />
-                Soil Moisture score: <span className={classes.bold}>{scoreValues.soilMoistureScore}</span>
+                Soil Moisture score: <span className={classes.bold}>{scoreValues.soilCationScore}</span>
                 <br />
                 <br />
                 Composite score: <span className={classes.bold}>{scoreValues.soilScore}</span>

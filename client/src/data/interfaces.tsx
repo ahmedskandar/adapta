@@ -1,4 +1,4 @@
-import { enumScore } from "./enums";
+import { enumScore, enumSliderColor } from "./enums";
 
 export interface ScoresSliceI {
   ScoresSlice: {
@@ -10,11 +10,11 @@ export interface ScoresSliceI {
     rainfallScore: number;
     aridityScore: number;
     waterAvailabilityScore: number;
-    waterQualityScore: number;
+    waterErosionScore: number;
     irrigationScore: number;
     organicCarbonScore: number;
     soilPHScore: number;
-    soilMoistureScore: number;
+    soilCationScore: number;
     creditScore: number;
   };
 }
@@ -78,4 +78,10 @@ export interface DroughtCircleI {
   tooltip3: string;
   tooltip4: string;
   tooltip5: string;
+}
+
+export interface SliderI {
+  sliderColor: enumSliderColor;
+  value: number
+  optimalScore: number
 }

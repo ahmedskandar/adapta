@@ -9,11 +9,11 @@ const initialState = {
     rainfallScore: 0,
     aridityScore: 0,
     waterAvailabilityScore: 0,
-    waterQualityScore: 0,
+    waterErosionScore: 0,
     irrigationScore: 0,
     organicCarbonScore: 0,
     soilPHScore: 0,
-    soilMoistureScore: 0,
+    soilCationScore: 0,
     creditScore: 0
 }
 
@@ -30,11 +30,11 @@ export const ScoresSlice = createSlice({
             state.rainfallScore = actions.payload.rainfallScore
             state.aridityScore = actions.payload.aridityScore
             state.waterAvailabilityScore = actions.payload.waterAvailabilityScore
-            state.waterQualityScore = actions.payload.waterQualityScore
+            state.waterErosionScore = actions.payload.waterErosionScore
             state.irrigationScore = actions.payload.irrigationScore
             state.organicCarbonScore = actions.payload.organicCarbonScore
             state.soilPHScore = actions.payload.soilPHScore
-            state.soilMoistureScore = actions.payload.soilMoistureScore
+            state.soilCationScore = actions.payload.soilCationScore
             state.creditScore = actions.payload.creditScore
         },
         reset(state) {
@@ -46,11 +46,11 @@ export const ScoresSlice = createSlice({
             state.rainfallScore = 0
             state.aridityScore = 0
             state.waterAvailabilityScore = 0
-            state.waterQualityScore = 0
+            state.waterErosionScore = 0
             state.irrigationScore = 0
             state.organicCarbonScore = 0
             state.soilPHScore = 0
-            state.soilMoistureScore = 0
+            state.soilCationScore = 0
             state.creditScore = 0
         }
     }

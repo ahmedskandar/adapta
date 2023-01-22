@@ -43,9 +43,15 @@ const Form: React.FC = () => {
       waterScore = 25,
       soilScore = 100,
       compositeScore = 50,
-      aridityScore = 68.5,
-      droughtScore = 40.6,
-      rainfallScore = 70.6
+      aridityScore = 88.5,
+      droughtScore = 20.6,
+      rainfallScore = 40.6,
+      waterErosionScore = 10,
+      waterAvailabilityScore = 80,
+      irrigationScore = 100,
+      organicCarbonScore = 20,
+      soilCationScore = 50,
+      soilPHScore = 90
     /**Then Store the fetched values in redux */
     dispatch(
       ScoresSliceActions.store({
@@ -55,7 +61,13 @@ const Form: React.FC = () => {
         compositeScore,
         aridityScore,
         droughtScore,
-        rainfallScore
+        rainfallScore,
+        waterAvailabilityScore,
+        waterErosionScore,
+        irrigationScore,
+        organicCarbonScore,
+        soilCationScore,
+        soilPHScore
       })
     );
 
