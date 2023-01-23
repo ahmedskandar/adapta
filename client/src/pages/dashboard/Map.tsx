@@ -1,13 +1,64 @@
 import React, { useState, useEffect } from "react";
 import classes from "./Map.module.css";
-import { MapContainer, FeatureGroup, TileLayer, Marker, Popup, Circle } from "react-leaflet";
+import { MapContainer, FeatureGroup, TileLayer, Marker, Popup, Circle, LayerGroup } from "react-leaflet";
 import { EditControl } from "react-leaflet-draw"
+import 'leaflet-draw'
 
 
 
 const Map: React.FC = () => {
+  
 
-  const _created = (e: any) => console.log(e);
+  const [initialV, setInitialV] = useState<any>({
+    lat: 1.041114,
+    lng: 35.221814
+  })
+  
+  const [editableFG, setEditableFG] = useState<any>("hello");
+
+  const _drawStart = (e: any) => {
+    let type = e.layerType
+    let layer = e.layer;
+
+    console.log(editableFG)
+    
+    
+    
+    
+    if ( type === 'marker') {
+
+       // here you have all the stored layers
+   
+      
+      setInitialV({
+        lat: e.layer._latlng.lat,
+        lng: e.layer._latlng.lng
+      })
+    // Do marker specific actions
+
+  } 
+  if (!editableFG) {
+    return;
+  }
+  const drawnItems = editableFG.leafletElement._layers;
+  // console.log(drawnItems);
+  // if the number of layers is bigger than 1 then delete the first
+  if (Object.keys(drawnItems).length > 1) {
+      Object.keys(drawnItems).forEach((layerid, index) => {
+        if (index > 0) return;
+        const layer = drawnItems[layerid];
+        editableFG.leafletElement.removeLayer(layer);
+          
+      });
+    }
+
+}
+
+const onFeatureGroupReady = (reactFGref: any) => {
+  // store the featureGroup ref for future access to content
+  setEditableFG(reactFGref);
+  console.log(editableFG)
+};
 
 
   const useGeoLocation = () => {
@@ -72,17 +123,20 @@ const Map: React.FC = () => {
         zoom={14}
         scrollWheelZoom={true}
       >
-        <FeatureGroup>
+        <FeatureGroup ref={featureGroupRef => {
+                onFeatureGroupReady(featureGroupRef);
+            }}>
+          
                 <EditControl
                   position="topright"
-                  onCreated={_created}
+                  onCreated={_drawStart}
                   draw={
                     {
-                      /* rectangle: false,
+                      rectangle: false,
                     circle: false,
                     circlemarker: false,
-                    marker: false,
-                    polyline: false, */
+                    polyline: false, 
+                    /*marker: false,*/
                     }
                   }
                 />
@@ -91,7 +145,7 @@ const Map: React.FC = () => {
           attribution='&copy; <a href=https://www.protectedplanet.net/en">Protected planet</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[location.coordinates.lat, location.coordinates.lng]}>
+        <Marker position={[initialV.lat, initialV.lng]}>
           <Popup>Your Location</Popup>
         </Marker>
       </MapContainer>

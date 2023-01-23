@@ -30,7 +30,7 @@ const Slider: React.FC <SliderI> = ({sliderColor, value, optimalScore}) => {
         </div>}
       </div>
 
-      <div className={classes.slider}>
+      <div className={`${classes.slider} ${hasComputed && classname}`}>
         <input className={classname} type="range" min="1" max="100" value={value} />
       </div>
     </div>
