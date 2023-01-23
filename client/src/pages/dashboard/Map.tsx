@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import classes from "./Map.module.css";
 import { MapContainer, FeatureGroup, TileLayer, Marker, Popup, Circle, LayerGroup } from "react-leaflet";
 import { EditControl } from "react-leaflet-draw"
@@ -7,20 +7,34 @@ import 'leaflet-draw'
 
 
 const Map: React.FC = () => {
-  
 
-  const [initialV, setInitialV] = useState<any>({
-    lat: 1.041114,
-    lng: 35.221814
-  })
+  const [coord, setPosition] = useState({
+    lat: 0,
+    lng: 0
+  });
+
+ let initialV = {
+  lat: 0,
+  lng: 0,
+ }
+  // const [initialV, setInitialV] = useState<any>({
+  //   lat: 1.041114,
+  //   lng: 35.221814
+  // })
+
+  const featureGroupRef = useRef<any>();
   
-  const [editableFG, setEditableFG] = useState<any>("hello");
+  // const [editableFG, setEditableFG] = useState();
 
   const _drawStart = (e: any) => {
     let type = e.layerType
     let layer = e.layer;
 
-    console.log(editableFG)
+    //  console.log(editableFG) 
+
+    if(featureGroupRef)
+console.log(featureGroupRef.current)
+    //It doesnt get the values
     
     
     
@@ -29,37 +43,54 @@ const Map: React.FC = () => {
 
        // here you have all the stored layers
    
-      
-      setInitialV({
+      // console.log(e.layer._latlng.lat, e.layer._latlng.lng)
+ 
+      //  setInitialV({
+      //   lat: e.layer._latlng.lat,
+      //   lng: e.layer._latlng.lng
+      // })
+      initialV = {
         lat: e.layer._latlng.lat,
         lng: e.layer._latlng.lng
-      })
+    }
+      // console.log(initialV.lat, initialV.lng)
+      featureGroupRef.current._layers = Object.values(featureGroupRef.current._layers)
+      delete featureGroupRef.current._layers[0]
+      // featureGroupRef.current._layers.filter((element: any) => element._latlng !== initialV)
+      console.log(featureGroupRef.current._layers)
+    
+    // featureGroupRef.current._layers.filter((layer: any) => layer._latlng.lat !== e.layer._latlng.lat)
+
+
+    
     // Do marker specific actions
 
   } 
-  if (!editableFG) {
-    return;
-  }
-  const drawnItems = editableFG.leafletElement._layers;
+ 
+    // console.log(editableFG) It doesnt get the values
+
+  // const drawnItems = editableFG.leafletElement._layers;
   // console.log(drawnItems);
   // if the number of layers is bigger than 1 then delete the first
-  if (Object.keys(drawnItems).length > 1) {
-      Object.keys(drawnItems).forEach((layerid, index) => {
-        if (index > 0) return;
-        const layer = drawnItems[layerid];
-        editableFG.leafletElement.removeLayer(layer);
+  // if (Object.keys(drawnItems).length > 1) {
+  //     Object.keys(drawnItems).forEach((layerid, index) => {
+  //       if (index > 0) return;
+  //       const layer = drawnItems[layerid];
+  //       editableFG.leafletElement.removeLayer(layer);
           
-      });
-    }
+  //     });
+  //   }
 
 }
 
-const onFeatureGroupReady = (reactFGref: any) => {
-  // store the featureGroup ref for future access to content
-  setEditableFG(reactFGref);
-  console.log(editableFG)
-};
+// const onFeatureGroupReady = (reactFGref: any) => {
+//   // store the featureGroup ref for future access to content
+//   setEditableFG(reactFGref);
+//   // if(editableFG)
+//   // console.log(editableFG)
 
+// };
+  
 
   const useGeoLocation = () => {
     const [location, setLocation] = useState<any>({
@@ -123,9 +154,7 @@ const onFeatureGroupReady = (reactFGref: any) => {
         zoom={14}
         scrollWheelZoom={true}
       >
-        <FeatureGroup ref={featureGroupRef => {
-                onFeatureGroupReady(featureGroupRef);
-            }}>
+        <FeatureGroup ref={featureGroupRef}>
           
                 <EditControl
                   position="topright"
@@ -145,7 +174,7 @@ const onFeatureGroupReady = (reactFGref: any) => {
           attribution='&copy; <a href=https://www.protectedplanet.net/en">Protected planet</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[initialV.lat, initialV.lng]}>
+        <Marker position={[coord.lat, coord.lng]}>
           <Popup>Your Location</Popup>
         </Marker>
       </MapContainer>
