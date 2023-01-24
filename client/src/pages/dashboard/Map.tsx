@@ -8,78 +8,67 @@ import 'leaflet-draw'
 
 const Map: React.FC = () => {
 
-  const [coord, setPosition] = useState({
+  const newMarkerCoords = useRef<any>({
     lat: 0,
     lng: 0
-  });
+  })
 
- let initialV = {
-  lat: 0,
-  lng: 0,
- }
-  // const [initialV, setInitialV] = useState<any>({
-  //   lat: 1.041114,
-  //   lng: 35.221814
-  // })
+  //On the outside use State, inside use Ref
+    const [latlng, setlatlng] = useState<any>({
+      lat: 0,
+      lng: 0
+    })
+
+    // console.log(latlng)
 
   const featureGroupRef = useRef<any>();
   
-  // const [editableFG, setEditableFG] = useState();
 
-  const _drawStart = (e: any) => {
+  const _onCreated = (e: any) => {
+
     let type = e.layerType
-    let layer = e.layer;
 
-    //  console.log(editableFG) 
+ if ( type === 'marker') {
+
+
+
+  newMarkerCoords.current.lat = e.layer._latlng.lat
+  newMarkerCoords.current.lng = e.layer._latlng.lng
+  
+  setlatlng({
+    lat: newMarkerCoords.current.lat,
+    lng: newMarkerCoords.current.lng
+  })
+
+  if(newMarkerCoords.current != undefined)
+  console.log(newMarkerCoords.current)
 
     if(featureGroupRef)
 console.log(featureGroupRef.current)
-    //It doesnt get the values
-    
-    
-    
-    
-    if ( type === 'marker') {
 
-       // here you have all the stored layers
-   
-      // console.log(e.layer._latlng.lat, e.layer._latlng.lng)
- 
-      //  setInitialV({
-      //   lat: e.layer._latlng.lat,
-      //   lng: e.layer._latlng.lng
-      // })
-      initialV = {
-        lat: e.layer._latlng.lat,
-        lng: e.layer._latlng.lng
-    }
-      // console.log(initialV.lat, initialV.lng)
-      featureGroupRef.current._layers = Object.values(featureGroupRef.current._layers)
-      delete featureGroupRef.current._layers[0]
-      // featureGroupRef.current._layers.filter((element: any) => element._latlng !== initialV)
-      console.log(featureGroupRef.current._layers)
     
-    // featureGroupRef.current._layers.filter((layer: any) => layer._latlng.lat !== e.layer._latlng.lat)
+      // featureGroupRef.current._layers = Object.values(featureGroupRef.current._layers)
+      // delete featureGroupRef.current._layers[3]
+      // console.log(featureGroupRef.current._layers)
+    
 
 
     
-    // Do marker specific actions
 
   } 
  
-    // console.log(editableFG) It doesnt get the values
 
-  // const drawnItems = editableFG.leafletElement._layers;
-  // console.log(drawnItems);
+  const drawnItems = featureGroupRef.current._layers;
+  console.log(drawnItems);
   // if the number of layers is bigger than 1 then delete the first
-  // if (Object.keys(drawnItems).length > 1) {
-  //     Object.keys(drawnItems).forEach((layerid, index) => {
-  //       if (index > 0) return;
-  //       const layer = drawnItems[layerid];
-  //       editableFG.leafletElement.removeLayer(layer);
+  if (Object.keys(drawnItems).length > 1) {
+      Object.keys(drawnItems).forEach((layerid, index) => {
+        if (index > 0) return;
+        const layer = drawnItems[layerid];
+        featureGroupRef.current.removeLayer(layer);
           
-  //     });
-  //   }
+      });
+    }
 
 }
 
@@ -158,7 +147,7 @@ console.log(featureGroupRef.current)
           
                 <EditControl
                   position="topright"
-                  onCreated={_drawStart}
+                  onCreated={_onCreated}
                   draw={
                     {
                       rectangle: false,
@@ -174,7 +163,7 @@ console.log(featureGroupRef.current)
           attribution='&copy; <a href=https://www.protectedplanet.net/en">Protected planet</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[coord.lat, coord.lng]}>
+        <Marker position={[latlng.lat, latlng.lng]}>
           <Popup>Your Location</Popup>
         </Marker>
       </MapContainer>
