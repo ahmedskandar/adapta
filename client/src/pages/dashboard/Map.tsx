@@ -35,8 +35,8 @@ const Map: React.FC<MapI> = ({coords}) => {
   useEffect(() => {
   
   setlatlng({
-    lat: coords.lat,
-    lng: coords.lng
+    lat: +coords.lat,
+    lng: +coords.lng
   })
 },[coords])
 
@@ -90,7 +90,6 @@ const Map: React.FC<MapI> = ({coords}) => {
     }
 
 }
-console.log(coords)
 
 // const onFeatureGroupReady = (reactFGref: any) => {
 //   // store the featureGroup ref for future access to content

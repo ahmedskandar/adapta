@@ -45,9 +45,9 @@ const Form: React.FC <FormI> = ({gatherCoords}) => {
     setCropInputType(true);
   };
 
-  const [location, setLocation] = useState<string>();
-  const [period, setPeriod] = useState<string>();
-  const [crop, setCrop] = useState<string>();
+  const [location, setLocation] = useState<string>("");
+  const [period, setPeriod] = useState<string>("");
+  const [crop, setCrop] = useState<string>("");
 
   useEffect(() => {
     setLocation(mapCoords)
