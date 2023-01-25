@@ -12,7 +12,6 @@ export enum enumScore {
 }
 
 export enum enumSliderColor {
-  low = "yellow",
-  optimal = "green",
-  high = "red"
+  green = "green",
+  red = "red"
 }

@@ -69,7 +69,7 @@ const Form: React.FC <FormI> = ({gatherCoords}) => {
       compositeScore = 50,
       aridityScore = 88.5,
       droughtScore = 20.6,
-      rainfallScore = 40.6,
+      rainfallScore = 80.6,
       waterErosionScore = 10,
       waterAvailabilityScore = 80,
       irrigationScore = 100,
