@@ -3,10 +3,17 @@ import classes from "./Map.module.css";
 import { MapContainer, FeatureGroup, TileLayer, Marker, Popup, Circle, LayerGroup } from "react-leaflet";
 import { EditControl } from "react-leaflet-draw"
 import 'leaflet-draw'
+import { FormSliceI, MapI } from "../../data/interfaces";
+import { useDispatch } from 'react-redux'
+import { FormSliceActions } from "../../store/FormSlice";
 
 
 
-const Map: React.FC = () => {
+const Map: React.FC<MapI> = ({coords}) => {
+
+  const dispatch = useDispatch()
+
+
 
   const newMarkerCoords = useRef<any>({
     lat: 0,
@@ -19,16 +26,25 @@ const Map: React.FC = () => {
       lng: 0
     })
 
+
+
     // console.log(latlng)
 
   const featureGroupRef = useRef<any>();
   
+  useEffect(() => {
+  
+  setlatlng({
+    lat: coords.lat,
+    lng: coords.lng
+  })
+},[coords])
 
-  const _onCreated = (e: any) => {
+ const _onCreated = (e: any) => {
 
     let type = e.layerType
 
- if ( type === 'marker') {
+  if ( type === 'marker') {
 
 
 
@@ -40,11 +56,14 @@ const Map: React.FC = () => {
     lng: newMarkerCoords.current.lng
   })
 
-  if(newMarkerCoords.current != undefined)
-  console.log(newMarkerCoords.current)
+  dispatch(FormSliceActions.setLocation(`${e.layer._latlng.lat},${ e.layer._latlng.lng}`))
 
-    if(featureGroupRef)
-console.log(featureGroupRef.current)
+
+//   if(newMarkerCoords.current != undefined)
+//   console.log(newMarkerCoords.current)
+
+//     if(featureGroupRef)
+// console.log(featureGroupRef.current)
 
     
       // featureGroupRef.current._layers = Object.values(featureGroupRef.current._layers)
@@ -59,7 +78,7 @@ console.log(featureGroupRef.current)
  
 
   const drawnItems = featureGroupRef.current._layers;
-  console.log(drawnItems);
+  // console.log(drawnItems);
   // if the number of layers is bigger than 1 then delete the first
   if (Object.keys(drawnItems).length > 1) {
       Object.keys(drawnItems).forEach((layerid, index) => {
@@ -71,6 +90,7 @@ console.log(featureGroupRef.current)
     }
 
 }
+console.log(coords)
 
 // const onFeatureGroupReady = (reactFGref: any) => {
 //   // store the featureGroup ref for future access to content

@@ -85,3 +85,14 @@ export interface SliderI {
   value: number | string
   optimalScore: number
 }
+
+export interface FormI {
+  gatherCoords: (lat: string, lng: string) => void
+}
+
+export interface MapI {
+  coords: {
+    lat: string,
+    lng: string
+  }
+}

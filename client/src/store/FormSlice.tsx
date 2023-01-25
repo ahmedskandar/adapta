@@ -22,6 +22,9 @@ export const FormSlice = createSlice({
             state.location = ""
             state.crop = ""
             state.period = ""
+        },
+        setLocation(state, actions) {
+            state.location = actions.payload
         }
     }
 })

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./Dashboard.module.css";
 import Form from "./Form";
 import Map from "./Map";
@@ -13,6 +13,18 @@ import StatsCard from "./StatsCard";
 const Home: React.FC = () => {
 
   const scoreValues = useSelector((state: ScoresSliceI) => state.ScoresSlice)
+
+  const [coords, setCoords] = useState({
+    lat: "",
+    lng: ""
+  })
+
+  const gatherCoords = (lat: string, lng: string) => {
+    setCoords({
+      lat,
+      lng 
+    })
+  }
 
   const hasComputed = useSelector(
     (state: FormSliceI) => state.form.hasComputed
@@ -36,10 +48,10 @@ const Home: React.FC = () => {
           <section className={classes.topSection}>
             <div>
               <div className={classes.formContainer}>
-                {hasComputed ? <FormPrime /> : <Form />}
+                {hasComputed ? <FormPrime /> : <Form gatherCoords = {gatherCoords}/>}
               </div>
               <div className={classes.mapContainer}>
-                <Map />
+                <Map coords = {coords}/>
               </div>
               <div className={classes.compositeContainer}>
                 <CompositeCard />

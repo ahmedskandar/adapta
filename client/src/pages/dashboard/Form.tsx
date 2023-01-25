@@ -1,16 +1,34 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import classes from "./Form.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import tick from "../../assets/svg/tick.svg";
 import danger from "../../assets/svg/danger.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FormSliceActions } from "../../store/FormSlice";
 import Button from "../../components/UI/Button";
 import { calcDate } from "../../data/Functions";
 import { ScoresSliceActions } from "../../store/ScoresSlice";
+import { FormI, FormSliceI } from "../../data/interfaces";
 
-const Form: React.FC = () => {
+const Form: React.FC <FormI> = ({gatherCoords}) => {
+
+  const mapCoords = useSelector((state: FormSliceI) => state.form.location)
+
+  const cropChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setCrop(e.target.value)
+  }
+
+  const locationChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLocation(e.target.value)
+    let locationSplit = e.target.value.split(",")
+    gatherCoords(locationSplit[0], locationSplit[1])
+  }
+
+  const periodChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPeriod(e.target.value)
+  }
+
   const dispatch = useDispatch();
 
   const [min, max] = calcDate();
@@ -27,16 +45,22 @@ const Form: React.FC = () => {
     setCropInputType(true);
   };
 
-  const locationInputRef = useRef<HTMLInputElement>(null);
-  const periodInputRef = useRef<HTMLInputElement>(null);
-  const cropInputRef = useRef<HTMLSelectElement>(null);
+  const [location, setLocation] = useState<string>();
+  const [period, setPeriod] = useState<string>();
+  const [crop, setCrop] = useState<string>();
+
+  useEffect(() => {
+    setLocation(mapCoords)
+   }, [mapCoords])
+
+  // useEffect(() => {
+  //   console.log(location)
+  //  }, [location])
 
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const location = locationInputRef.current!.value;
-    const period = periodInputRef.current!.value;
-    const crop = cropInputRef.current!.value;
+  
 
     /*Fetching api goes here*/
     let climateScore = 79,
@@ -73,9 +97,10 @@ const Form: React.FC = () => {
 
     dispatch(FormSliceActions.compute({ location, period, crop }));
 
-    locationInputRef.current!.value = "";
-    periodInputRef.current!.value = "";
-    cropInputRef.current!.value = "";
+    setLocation("")
+    setPeriod("")
+    setCrop("")
+    
   };
 
   return (
@@ -85,7 +110,8 @@ const Form: React.FC = () => {
           <label htmlFor="location">Search Location</label> <br />
           <input
             required
-            ref={locationInputRef}
+            value={location}
+            onChange={locationChangeHandler}
             type="text"
             placeholder="Enter Location Coordinates"
             id="location"
@@ -95,7 +121,7 @@ const Form: React.FC = () => {
           <label htmlFor="time">Select Period To Plant</label> <br />
           <input
             required
-            ref={periodInputRef}
+            onChange={periodChangeHandler}
             onFocus={dateType}
             max={max}
             min={min}
@@ -108,7 +134,7 @@ const Form: React.FC = () => {
           {cropInputType === false ? (
             <input type="text" onFocus={cropType} placeholder="Select crop" />
           ) : (
-            <select required ref={cropInputRef} className={classes.select}>
+            <select required onChange={cropChangeHandler} className={classes.select}>
               <option value="" selected disabled hidden>
                 Select a crop
               </option>
