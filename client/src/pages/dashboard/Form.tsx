@@ -118,7 +118,7 @@ const Form: React.FC <FormI> = ({gatherCoords}) => {
           />
         </div>
         <div className={`${classes.left} ${classes.margin}`}>
-          <label htmlFor="time">Select Period To Plant</label> <br />
+          <label htmlFor="time">Loan period</label> <br />
           <input
             required
             onChange={periodChangeHandler}

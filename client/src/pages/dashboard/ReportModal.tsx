@@ -32,7 +32,7 @@ const ModalOverlay: React.FC<ModalOverlayI> = ({ onClose }) => {
             <div>Map</div>
             <h3 className={classes.h3Aside}>Location</h3>
             {location}
-            <h3 className={classes.h3Aside}>Period</h3>
+            <h3 className={classes.h3Aside}>Loan Period</h3>
             {period}
             <h3 className={classes.h3Aside}>Crops to be planted</h3>
             {crop}

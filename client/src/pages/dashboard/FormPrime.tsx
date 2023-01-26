@@ -25,7 +25,7 @@ function FormPrime() {
       </div>
 
       <div>
-        <h4>Planting period</h4>
+        <h4>Loan period</h4>
         <span>{period}</span>
       </div>
 
