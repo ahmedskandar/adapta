@@ -17,7 +17,6 @@ import { useGeoLocation } from "../../hooks/useGeolocation";
 
 const Map: React.FC<MapI> = ({ coords }) => {
 
-  const [hasMarked, setHasMarked] = useState(false)
 
   const dispatch = useDispatch();
 
@@ -28,8 +27,8 @@ const Map: React.FC<MapI> = ({ coords }) => {
 
   //On the outside use State, inside use Ref
   const [latlng, setlatlng] = useState<any>({
-    lat: 0,
-    lng: 0,
+    lat: undefined,
+    lng: undefined,
   });
 
   // console.log(latlng)
@@ -45,7 +44,6 @@ const Map: React.FC<MapI> = ({ coords }) => {
 
   const _onCreated = (e: any) => {
 
-    setHasMarked(true)
 
     let type = e.layerType;
 
@@ -162,7 +160,7 @@ const Map: React.FC<MapI> = ({ coords }) => {
           attribution='&copy; <a href=https://www.protectedplanet.net/en">Protected planet</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={hasMarked ? [latlng.lat, latlng.lng] : center}>
+        <Marker position={latlng.lat ? [latlng.lat, latlng.lng] : center}>
           <Popup>Your Location</Popup>
         </Marker>
       </MapContainer>
