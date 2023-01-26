@@ -15,8 +15,6 @@ export const calcDate = () => {
 
 export const getSliderData = (
   heading: any,
-  value: any,
-  score: any,
   scoreValues: any
 ) => {
   let score1 = "",

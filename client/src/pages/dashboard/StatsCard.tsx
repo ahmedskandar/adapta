@@ -10,7 +10,7 @@ import { getSliderData } from "../../data/Functions";
 const StatsCard: React.FC<StatsCardI> = ({ heading, value, score }) => {
   const scoreValues = useSelector((state: ScoresSliceI) => state.ScoresSlice);
 
-   const sliderData = getSliderData(heading, value, score, scoreValues)
+   const sliderData = getSliderData(heading, scoreValues)
  
   
 
