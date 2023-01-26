@@ -25,11 +25,6 @@ const Home: React.FC = () => {
       lng 
     })
   }
-
-  const hasComputed = useSelector(
-    (state: FormSliceI) => state.form.hasComputed
-  );
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModalHandler = () => {
@@ -48,7 +43,7 @@ const Home: React.FC = () => {
           <section className={classes.topSection}>
             <div>
               <div className={classes.formContainer}>
-                {hasComputed ? <FormPrime /> : <Form gatherCoords = {gatherCoords}/>}
+                  <Form gatherCoords = {gatherCoords}/>
               </div>
               <div className={classes.mapContainer}>
                 <Map coords = {coords}/>

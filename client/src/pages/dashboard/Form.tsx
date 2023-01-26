@@ -10,6 +10,7 @@ import Button from "../../components/UI/Button";
 import { calcDate } from "../../data/Functions";
 import { ScoresSliceActions } from "../../store/ScoresSlice";
 import { FormI, FormSliceI } from "../../data/interfaces";
+import FormPrime from "./FormPrime";
 
 const Form: React.FC <FormI> = ({gatherCoords}) => {
 
@@ -102,6 +103,16 @@ const Form: React.FC <FormI> = ({gatherCoords}) => {
     setCrop("")
     
   };
+
+  const hasComputed = useSelector(
+    (state: FormSliceI) => state.form.hasComputed
+  );
+
+  if(hasComputed) {
+    return (
+      <FormPrime />
+    )
+  }
 
   return (
     <aside className={classes.container}>
