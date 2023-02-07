@@ -7,3 +7,15 @@
   border: none;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 650px) {
+  .btn {
+    font-size: 11px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .btn {
+    font-size: 11px;
+  }
+}

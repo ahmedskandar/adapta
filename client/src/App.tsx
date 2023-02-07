@@ -10,7 +10,6 @@ const App: React.FC = () => {
   return (
     <>
       <Wrapper>
-        <Header />
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
           {/* <Route path="/" element={<Chart />} /> */}

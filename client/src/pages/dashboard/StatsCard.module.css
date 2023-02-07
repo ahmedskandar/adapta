@@ -65,3 +65,11 @@
 .sec2 > div > span {
   margin-top: 25px;
 }
+
+@media only screen and (max-width: 992px) {
+  .cont2 {
+    font-size: xx-small;
+  }
+}
+
+

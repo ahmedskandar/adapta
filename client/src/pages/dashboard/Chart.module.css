@@ -15,6 +15,7 @@
 .chart {
   text-align: center;
   width: 10vw;
+  height: 100%;
 }
 
 .chart > img {
@@ -41,25 +42,24 @@
   font-size: 3vw;
 }
 
-
 @media only screen and (max-width: 992px) {
- .indicator-1, .chart {
-  width: 15vw;
- }
+  .indicator-1,
+  .chart {
+    width: 15vw;
+  }
 
- .indicator-1 img {
-  width: 3vw;
-}
-
-
+  .indicator-1 img {
+    width: 3vw;
+  }
 }
 
 @media only screen and (max-width: 650px) {
-
-  .indicator-1, .chart {
-    width: 25vw;
-   }
-.indicator-1 img {
-  width: 5vw;
-}
+  .indicator-1,
+  .chart {
+    width: 36vw;
+  }
+  .indicator-1 img {
+    width: 7vw;
+  }
+  
 }

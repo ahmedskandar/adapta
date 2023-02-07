@@ -61,5 +61,26 @@
   opacity: 1;
 }
 
+@media only screen and (max-width: 650px) {
+
+  .tooltip .tooltiptext {
+    bottom: 27px;
+  }
+
+  .heading {
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+
+  .tooltip .tooltiptext {
+    bottom: 27px;
+  }
+
+  .heading {
+    margin-bottom: 20px;
+  }
+}
 
 
