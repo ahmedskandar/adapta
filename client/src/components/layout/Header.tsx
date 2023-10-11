@@ -1,16 +1,27 @@
-import { FC } from "react";
+import { FC, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/svg/logo.svg";
 import classes from "./Header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignIn } from "@fortawesome/free-solid-svg-icons";
+import DrawerUI from "../UI/DrawerUI";
 
 const Header: FC = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [width]);
+
   return (
     <header className={classes.header}>
       <div className={classes.container}>
         <img src={logo} className={classes.logo} alt="logo" />
-        <nav>
+       {width > 992 && <nav className={classes.nav}>
           <ul>
             <li className={classes.li}>
               <NavLink
@@ -67,7 +78,8 @@ const Header: FC = () => {
               </NavLink>
             </li>
           </ul>
-        </nav>
+        </nav>}
+        {width <= 992 && <DrawerUI />}
       </div>
     </header>
   );

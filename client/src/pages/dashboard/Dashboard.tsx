@@ -6,8 +6,7 @@ import CompositeCard from "./CompositeCard";
 import ReportCard from "./ReportCard";
 import ReportModal from "./ReportModal";
 import { useSelector } from "react-redux";
-import { FormSliceI, ScoresSliceI } from "../../data/interfaces";
-import FormPrime from "./FormPrime";
+import { ScoresSliceI } from "../../data/interfaces";
 import StatsCard from "./StatsCard";
 
 const Home: React.FC = () => {

@@ -1,0 +1,30 @@
+.nav {
+    margin: 20px;
+}
+
+.nav ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+}
+
+.li {
+    margin: 10px 0;
+}
+
+.active {
+    color: red;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: not-allowed;
+  }
+
+  .link {
+    color: #2f4a59;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .signInIcon {
+    margin-left: 3px;
+  }

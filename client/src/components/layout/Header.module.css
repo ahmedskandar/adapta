@@ -12,12 +12,12 @@
   height: 15vh;
 }
 
-nav ul {
+.nav ul {
   display: flex;
   gap: 40px;
 }
 
-nav ul li {
+.nav ul li {
   list-style-type: none;
   position: relative;
 }
@@ -76,6 +76,11 @@ nav ul li {
   text-decoration: none;
 }
 
+.linkSignUp:hover {
+  background-color: #2f4a59;
+  color: #ecf1fa;
+}
+
 .logo {
   width: 187px;
 }
@@ -83,4 +88,19 @@ nav ul li {
 .signInIcon {
   width: 15px;
   margin-left: 5px;
+}
+
+.activeSignUp{
+  border-bottom: 2px solid #d9d9d9;
+  background-color: #2f4a59;
+  border-radius: 20px;
+  padding: 7px;
+  color: #ecf1fa;
+  font-weight: 700;
+  font-size: 1.3vw; /*23px*/
+  text-decoration: none;
+}
+
+.activeSignUp:hover {
+  cursor: not-allowed;
 }

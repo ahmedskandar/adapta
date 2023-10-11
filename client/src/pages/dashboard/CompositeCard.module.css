@@ -20,10 +20,6 @@
   border-radius: 20px;
 }
 
-.chart {
-  
-}
-
 .iconContainer {
   color: #467184;
   width: 100%;
@@ -75,7 +71,7 @@
 @media only screen and (max-width: 992px) {
 
   .tooltip .tooltiptext {
-    bottom: 27px;
+    bottom: 29px;
   }
 
   .heading {
